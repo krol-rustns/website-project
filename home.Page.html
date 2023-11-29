@@ -1,0 +1,222 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Consórcios LTDA</title>
+    <link rel="stylesheet" href="in.css" />
+    <meta name="Loop Nerd" content="Códigos Pronto" />
+    <meta name="description" content="Blog Loop Nerd Códigos Html Prontos para você utilizar no seu negócio."/>
+    <meta name="keywords" content="Loop Nerd &#8211; Códigos Html Prontos"/>
+    <meta name="author" content="https://www.loopnerd.com.br" />
+    <meta name="URL" content="https://www.loopnerd.com.br"/>
+    <meta http-equiv="content-language" content="pt-br" />
+    <meta name="robots" content="index, follow"/>
+    <a href="https://www.flaticon.com/br/icones-gratis/transporte"></a>
+
+</head>
+
+<body>
+    <header>
+        <div id="header">
+            <div>
+                <h1 class="con">Consórcios <mark>LTDA</mark></h1>
+            </div>
+
+            
+            <div>
+                <ul>
+                    <button id="botao-quem-somos">Quem somos</button>
+                    <button>Para Você</button>     
+                    <button id="botao-relatorio">Relatórios</button>
+                    <button id="botao-central-ajuda">Central de ajuda</button>
+                    <button onclick="openModal()">Acesso</button>   
+            </ul>
+            </div>
+        </div>
+    </header>
+
+    <div id="myModal" class="modal">
+        <div class="modal-content">
+          <span class="close" onclick="closeModal()">&times;</span>
+          <h2>Login</h2>
+          
+          <label for="username">Email:</label>
+          <input type="text" id="username" name="username">
+          <br>
+          <label for="password">Senha:</label>
+          <input type="password" id="password" name="password">
+          <br>
+          <button onclick="submitLogin()">Logar</button>
+        </div>
+    </div>
+
+    <div class="mae">
+        <div class="carousel-container">
+        <div class="carousel-track">
+            <div class="carousel-slide">
+                <img class="bn" src="C:\Users\anapa\Downloads\banner1.png">
+            </div>
+            <div class="carousel-slide">
+                <img class="bn" src="C:\Users\anapa\Downloads\banner2.png">
+            </div>
+            <div class="carousel-slide">
+                <img class="bn" src="C:\Users\anapa\Downloads\banner3.png">
+            </div>
+        </div>
+
+            <button class="carousel-button" id="prevBtn">&lt;</button>
+            <button class="carousel-button" id="nextBtn">&gt;</button>
+        </div>
+    </div>
+
+    <div id="imgEmpresa">
+        <div id="conhecer" class="blocos">
+            <h2 style="font-size: 42px;">Conhecendo-nos</h2>
+            <p class="um">Bem-vindo à <mark>Consórcios LTDA</mark>,a sua porta de entrada para realizar seus sonhos de
+                forma planejada e acessível.</p>
+            <p class="um">Somos uma empresa especializada em consórcios, comprometida em oferecer soluções financeiras
+                inteligentes para a realização dos seus objetivos,
+                visando tornar o acesso a bens e serviços descomplicado e acessível a todos.</p>
+            <p class="um">Oferecemos também uma ampla gama de consórcios, adaptados às necessidades e desejos individuais de cada
+                cliente. Seja a compra da casa própria,
+                do carro dos sonhos, a reforma da casa ou a viagem tão esperada, temos planos que se encaixam
+                perfeitamente no seu orçamento.</p>
+        </div>
+        <div class="imagens">
+            <img src="C:\Users\anapa\Downloads\empresa.jpg" width="400" height="300" alt="foto empresa" />
+        </div>
+    </div>
+
+    <div class="col-container">
+        <div class="col" style="background:rgb(37, 37, 35)">
+            <img src=>
+            <p>Consórcios de Imóveis</p>
+            <button class="caix">Clique para mais</button>
+        </div>
+    
+        <div class="col" style="background:rgb(37, 37, 35)">
+            <img scr=>           
+            <p>Consórcios de Serviços</p>
+            <button class="caix">Clique para mais</button>
+        </div>
+    
+        <div class="col" style="background:rgb(37, 37, 35)">
+            <img scr=>
+            <p>Consórcios de Automóveis</p>
+            <button class="caix">Clique para mais</button>
+            
+        </div>
+    </div>
+
+    <div id="relatorio">
+        <div id="relatorioTextos" class="blocos" >
+            <h2 style="font-size: 42px;">Transparência</h2>
+            <p class="um">Na nossa abordagem, a transparência com os nossos clientes é fundamental. Acreditamos que a confiança é
+                construída através da clareza e da abertura nas nossas operações. É por isso que nos comprometemos a
+                fornecer relatórios detalhados sobre as comissões da nossa empresa.</p>
+            <p class="um">Valorizamos a compreensão mútua e acreditamos que ao compartilhar informações de forma transparente,
+                fortalecemos os laços com nossos clientes, proporcionando-lhes a confiança necessária para tomar decisões
+                informadas sobre seus investimentos em consórcio. Estamos empenhados em estabelecer uma relação de parceria
+                duradoura, baseada na integridade e na transparência.</p>
+        </div>
+        <div class="imagens">
+            <figure>
+                <img src="C:\Users\anapa\OneDrive\Documentos\relatório.jpg" width="400" height="300" alt="foto lista comissão" />
+                    <figcaption style="text-align: center;">
+                        <button>Aba relatórios</button>
+                    </figcaption>
+            </figure>
+        </div>
+    </div>
+
+    <div id="ajuda">
+        <h2 style="margin-left: 15px; margin-bottom: 10px;">Central de ajuda</h2>
+        <p class="duvida"><a href="relatorio2.html"> Dúvidas frequentes</a></p>
+        <p class="duvida"><a href="relatorio2.html"> Fale conosco</a></p>
+        <p class="duvida"><a href="relatorio2.html"> Consulte boletos antigos</a></p>
+        <p class="duvida"><a href="relatorio2.html"> Regulamentos</a></p>
+        <p class="duvida"><a href="relatorio2.html"> Resultado das assembleias</a></p>
+    </div>
+
+    <footer>
+        <p>Todos os direitos reservados. </p>
+    </footer>
+  
+    
+      
+
+    <script>
+        document.getElementById('botao-central-ajuda').addEventListener('click', function() {
+            window.location.href = '#ajuda';
+        });
+        document.addEventListener("DOMContentLoaded", function() {
+            const track = document.querySelector('.carousel-track');
+            const slides = Array.from(track.children); //convertendo os filhos do track em um array
+            const prevButton = document.getElementById('prevBtn');
+            const nextButton = document.getElementById('nextBtn');
+
+            const slideWidth = slides[0].getBoundingClientRect().width; //ajusta a posição dos slides no carrossel
+
+            const setSlidePosition = (slide, index) => {//define a posiçao de cada slide e os organiza na horizontal
+                slide.style.left = slideWidth * index + 'px';
+            };
+
+            slides.forEach(setSlidePosition);//posiciona cada slide individualmente
+
+            const moveToSlide = (track, currentSlide, targetSlide) => {//move os slides para esquerda ou direita e define "transform" com base na posição do próximo
+                track.style.transform = 'translateX(-' + targetSlide.style.left + ')';
+            };
+
+            nextButton.addEventListener('click', () => {//adiciona um ouvinte de evento para o clique no botão "Próximo", assim, quando o botão é clicado, a função é executada.
+                const currentSlide = track.querySelector('.carousel-slide:not(.hidden)');//Obtém o slide atual e exclui os hidden
+                const nextSlide = currentSlide.nextElementSibling || slides[0];//Obtém o próximo, caso não tenha ele retorna ao primeiro
+
+                moveToSlide(track, currentSlide, nextSlide);//move para o  próximo slide
+                currentSlide.classList.add('hidden');//Usa 'hidden' no próximo slide para mostrá-lo.
+                nextSlide.classList.remove('hidden');//Remove'hidden' do próximo slide para mostrá-lo.
+            });
+
+            prevButton.addEventListener('click', () => {//{Mesma coisa, só que com o anterior
+                const currentSlide = track.querySelector('.carousel-slide:not(.hidden)');
+                const prevSlide = currentSlide.previousElementSibling || slides[slides.length - 1];
+
+                moveToSlide(track, currentSlide, prevSlide);
+                currentSlide.classList.add('hidden');
+                prevSlide.classList.remove('hidden');//}
+            });
+        });
+
+    
+        function openModal() {
+            document.getElementById('myModal').style.display = 'block';
+        }
+
+        function closeModal() {
+            document.getElementById('myModal').style.display = 'none';
+        }
+
+        window.onclick = function(event) {
+            if (event.target === document.getElementById('myModal')) {
+            closeModal();
+        }
+        }
+
+        function submitLogin() {
+            document.getElementById('myModal').style.display = 'none';
+        }
+
+        
+        document.getElementById('botao-quem-somos').addEventListener('click', function () {
+            window.location.href = '#conhecer';
+        });
+
+        document.getElementById('botao-relatorio').addEventListener('click', function () {
+                    window.location.href = '#relatorio';
+        });
+
+        
+    </script>
+    
+</body>
+</html>
