@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Consórcios LTDA - Relatório de Vendas</title>
+        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+        <style>
+            body {
+                background-color: #3f3d3d;
+                color: #ffffff;
+            }
+            .table {
+                color: #ffffff;
+            }
+        </style>
+    </head>
+
+    <body>
+        <div class="container m-auto" style="padding-top: 25px;">
+            <h4 class="text-center">Relatório de Vendas</h4>
+
+            <table class="table table-hover">
+                <thead>
+                    <tr class="text-center">
+                        <th>Nome</th>
+                        <th>Cargo</th>
+                        <th>Total de Vendas</th>
+                        <th>Maior Venda</th>
+                        <th>Comissão</th>
+                    </tr>
+
+                </thead>
+                <tbody class="corpo"></tbody>
+            </table>
+        </div>
+
+        <script>
+            let vendedores = [];
+
+            document.addEventListener('DOMContentLoaded', function(){
+                fetch(`http://localhost:5000/vendedores`)
+                    .then(response => response.json())
+                    .then(data => {
+                        vendedores = data;
+                        renderizarTabela();
+                    })
+                    .catch(error => console.error('Error:', error));
+            });
+
+            function renderizarTabela() {
+                let tabela = document.querySelector('.table tbody');
+                tabela.innerHTML = '';
+
+                // Agrupar as vendas por vendedor
+                let vendasAgrupadas = {};
+                for (let vendedor of vendedores) {
+                    let codigoVendedorSemZero = parseInt(vendedor.codigoVendedor, 10);
+
+                    if (!vendasAgrupadas[codigoVendedorSemZero]) {
+                        vendasAgrupadas[codigoVendedorSemZero] = {
+                            nome: vendedor.nome,
+                            cargo: vendedor.cargo,
+                            totalVendas: 0,
+                            maiorVenda: 0,
+                            comissao: 0
+                        };
+                    }
+
+                    vendasAgrupadas[codigoVendedorSemZero].totalVendas += vendedor.valorVenda;
+                    if (vendedor.valorVenda > vendasAgrupadas[codigoVendedorSemZero].maiorVenda) {
+                        vendasAgrupadas[codigoVendedorSemZero].maiorVenda = vendedor.valorVenda;
+                    }
+                }
+
+                // Ordenar vendedores por total de vendas em ordem decrescente
+                let vendedoresOrdenados = Object.values(vendasAgrupadas).sort((a, b) => b.totalVendas - a.totalVendas);
+
+                // Renderizar a tabela com as vendas agrupadas e ordenadas
+                for (let vendedor of vendedoresOrdenados) {
+                    let valorVendaFormatado = formatarValor(vendedor.totalVendas);
+                    let maiorVendaFormatada = formatarValor(vendedor.maiorVenda);
+
+                    // Adicionar lógica para calcular a comissão com base no cargo
+                    let comissao = 0;
+                    switch(vendedor.cargo.toLowerCase()) {
+                        case 'júnior':
+                            comissao = vendedor.totalVendas * 0.01;
+                            break;
+                        case 'pleno':
+                            comissao = vendedor.totalVendas * 0.02;
+                            break;
+                        case 'sênior':
+                            comissao = vendedor.totalVendas * 0.03;
+                            break;
+                        // Adicione mais casos conforme necessário
+                    }
+
+                    let comissaoFormatada = formatarValor(comissao);
+                    let nomeFormatado = capitalizarPrimeiraLetra(vendedor.nome);
+
+                    let novaLinha = `
+                        <tr class="text-center">
+                            <td>${nomeFormatado}</td>
+                            <td>${vendedor.cargo}</td>
+                            <td>${valorVendaFormatado}</td>
+                            <td>${maiorVendaFormatada}</td>
+                            <td>${comissaoFormatada}</td>
+                        </tr>`;
+                    tabela.innerHTML += novaLinha;
+                }
+            }
+            
+            function formatarValor(valor){
+                valor = parseFloat(valor);
+                const valorVendaFormatada = `R$${valor.toLocaleString('pt-BR', {
+                    minimumFractionDigits: 2,
+                    maximumFractionDigits: 2
+                })}`;
+
+                return valorVendaFormatada;
+            }
+
+            // Função para capitalizar a primeira letra de uma string
+            function capitalizarPrimeiraLetra(string) {
+                return string.charAt(0).toUpperCase() + string.slice(1);
+            }
+
+        
+        </script>
+    </body>
+</html>
