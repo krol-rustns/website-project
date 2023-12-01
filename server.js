@@ -23,6 +23,13 @@ const server = http.createServer(function(req, res){
                 valorVenda: 5.00
             },
             {
+                codigoVendedor: 1,
+                nome: "Paulo",
+                cargo: "Pleno",
+                codigoVenda: 16,
+                valorVenda: 5.00
+            },
+            {
                 codigoVendedor: 3,
                 nome: "Laura Cardozo Alves",
                 cargo: "Sênior",

@@ -56,7 +56,7 @@
                 font-size: 18px !important;
                 font-weight: 300
             }
-            #cargo{
+            #cargo, #editCargo {
                 padding: 8px 15px;
                 border-radius: 5px !important;
                 margin: 5px 0px;
@@ -73,7 +73,7 @@
                 outline-width: 0;
                 font-weight: 400
             }
-            #cargo:focus{
+            #cargo:focus, #editCargo:focus{
                 -moz-box-shadow: none !important;
                 -webkit-box-shadow: none !important;
                 box-shadow: none !important;
@@ -89,7 +89,31 @@
             .headerList h3 {
                 margin: 0;
             }
-            
+            .edit {
+                padding: 1px;
+                margin: 0px;
+                background-color: #3f3d3d;
+                border-style: none;
+            }
+            .bi-pencil-square {
+                color: white;
+                background-color: #3f3d3d;
+            }
+            .editVenda {
+                padding: 0px 3px;
+                margin: 0px;
+            }
+            form:invalid button {
+                opacity: 0.3;
+                pointer-events: none;
+            }
+            .modal-title {
+                padding-left: 130px;
+            }
+            .modal-title2 {
+                padding-left: 173px;
+                margin: 0px;
+            }
         </style>
     </head>
     <body>
@@ -102,14 +126,15 @@
                 </span>
             </div>
 
-            <table class="table table-hover">
+            <table class="table table-hover" id="aTable">
                 <thead>
                     <tr class="text-center">
-                        <th class="col-2 text-center">Código do Vendedor</th>
-                        <th class="col-4 text-center">Nome do Vendedor</th>
-                        <th class="col-2">Cargo do Vendedor</th>
-                        <th class="col-2">Código da Venda</th>
+                        <th class="col-2 text-center">Cód. do Vendedor</th>
+                        <th class="col-2 text-center">Nome</th>
+                        <th class="col-2">Cargo</th>
+                        <th class="col-3">Cód. da Venda</th>
                         <th class="col-3 text-center">Valor da Venda</th>
+                        <th></th>
                     </tr>
 
                 </thead>
@@ -129,7 +154,7 @@
                         <form id="addVendedor">
                             <div class="form-group">
                                 <label for="codigoVendedor">Código do Vendedor:</label>
-                                <input type="number" class="form-control" id="codigoVendedor" required>
+                                <input type="number" class="form-control" id="codigoVendedor" min="1" required>
                             </div>
                             <div class="form-group">
                                 <label for="nome">Nome:</label>
@@ -146,15 +171,59 @@
                                   </div>
                                 <div class="form-group col-md-4">
                                     <label for="codigoVenda">Código da Venda:</label>
-                                    <input type="number" class="form-control" id="codigoVenda" required>
+                                    <input type="number" class="form-control" id="codigoVenda" min="1" required>
                                 </div>
                                 <div class="form-group col-md-4">
                                     <label for="valorVenda">Valor da Venda:</label>
-                                    <input type="number" class="form-control" id="valorVenda" step="any" required>
+                                    <input type="number" class="form-control" id="valorVenda" step="any" min="1" required>
                                 </div>
                             </div>
                             <hr />
                             <button type="submit" class="btn btn-primary">Salvar Contato</button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div id="modalEditarContato" class="modal">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title2">Editar Venda</h5>
+                        <button type="button" class="close" id="closeModal2">&times;</button>
+                    </div>
+                    <div class="modal-body">
+                        <form id="changeVendedor">
+                            <div class="form-group">
+                                <label for="editCodigoVendedor">Código do Vendedor:</label>
+                                <input type="number" class="form-control" id="editCodigoVendedor" min="1" required>
+                                <div id="codigoVendedorError" style="color: red;"></div>
+                            </div>
+                            <div class="form-group">
+                                <label for="editNome">Nome:</label>
+                                <input type="text" class="form-control" id="editNome" required>
+                            </div>
+                            <div class="form-row">
+                                <div class="form-group col-md-4">
+                                    <label for="editCargo">Cargo:</label>
+                                    <select class="form-control" id="editCargo" required>
+                                        <option>Júnior</option>
+                                        <option>Pleno</option>
+                                        <option>Sênior</option>
+                                    </select>
+                                </div>
+                                <div class="form-group col-md-4">
+                                    <label for="editCodigoVenda">Código da Venda:</label>
+                                    <input type="number" class="form-control" id="editCodigoVenda" min="1" required readonly>
+                                </div>
+                                <div class="form-group col-md-4">
+                                    <label for="editValorVenda">Valor da Venda:</label>
+                                    <input type="number" class="form-control" id="editValorVenda" step="any" min="1" required>
+                                </div>
+                            </div>
+                            <hr />
+                            <button type="submit" class="btn btn-primary">Salvar Edição</button>
                         </form>
                     </div>
                 </div>
@@ -167,7 +236,7 @@
             const abrirModal = document.getElementById("modalAdicionarContato");
             const addVenda = document.getElementById("btnAdd");
             const backOpacity = document.getElementsByClassName("modalBackdrop")[0];
-
+            
             addVenda.addEventListener('click', function(){
                 abrirModal.style.display = 'block';
                 backOpacity.style.display = 'block';
@@ -185,16 +254,16 @@
                     backOpacity.style.display = 'none';
                 }
             }
-
+            
             document.getElementById("addVendedor").addEventListener('submit', function(event){
                 event.preventDefault();
-
-                let codigoVendedor = document.getElementById("codigoVendedor").value;
+                
+                let codigoVendedor = parseInt(document.getElementById("codigoVendedor").value, 10);
                 let nome = document.getElementById("nome").value;
                 let cargo = document.getElementById("cargo").value;
-                let codigoVenda = document.getElementById("codigoVenda").value;
-                let valorVenda = document.getElementById("valorVenda").value;
-
+                let codigoVenda = parseInt(document.getElementById("codigoVenda").value, 10);
+                let valorVenda = parseInt(document.getElementById("valorVenda").value, 10);
+                
                 const vendedor = {
                     codigoVendedor,
                     nome,
@@ -202,8 +271,27 @@
                     codigoVenda,
                     valorVenda
                 };
-
+                
                 vendedores.push(vendedor);
+
+                const indexVendedores = vendedores.findIndex(v => v.codigoVendedor === codigoVendedor);
+                if(vendedores[indexVendedores].cargo !== cargo) {
+                    const vendedorCargoAntigo = vendedores[indexVendedores].cargo;
+                    vendedores.forEach((v, i) => {
+                        if(v.codigoVendedor === codigoVendedor) {
+                            vendedores[i].cargo = cargo;
+                        }
+                    });
+                }
+                if(vendedores[indexVendedores].nome !== nome) {
+                    const vendedorNomeAntigo = vendedores[indexVendedores].nome;
+                    vendedores.forEach((v, i) => {
+                        if(v.codigoVendedor === codigoVendedor) {
+                            vendedores[i].nome = vendedorNomeAntigo;
+                        }
+                    });
+                }
+
                 renderizarTabela();
                 document.getElementById("addVendedor").reset();
                 abrirModal.style.display = 'none';
@@ -213,7 +301,7 @@
             function renderizarTabela(){
                 let tabela = document.querySelector('.table tbody');
                 tabela.innerHTML = '';
-
+                
                 for(let vendedor of vendedores){
                     let codigoVendedorSemZero = parseInt(vendedor.codigoVendedor, 10);
                     let codigoVendaSemZero = parseInt(vendedor.codigoVenda, 10);
@@ -221,18 +309,20 @@
                     let codigoVendaFormatado = formatarCodigo(codigoVendaSemZero);
                     let valorVendaFormatado = formatarValor(vendedor.valorVenda);
                     let nomeFormatado = capitalizarPrimeiraLetra(vendedor.nome);
-
+                    
                     let novaLinha = `
-                                    <tr class="text-center">
-                                        <td class="col-1 text-center">${codigoVendedorFormatado}</td>
-                                        <td class="col-3 text-center">${nomeFormatado}</td>
-                                        <td class="col-1">${vendedor.cargo}</td>
-                                        <td class="col-1">${codigoVendaFormatado}</td>
-                                        <td class="col-3 text-center">${valorVendaFormatado}</td>
-                                    </tr>`;
-                    tabela.innerHTML += novaLinha;
+                    <tr class="text-center">
+                        <td class="col-1 text-center">${codigoVendedorFormatado}</td>
+                        <td class="col-3 text-center">${nomeFormatado}</td>
+                        <td class="col-1">${vendedor.cargo}</td>
+                        <td class="col-1">${codigoVendaFormatado}</td>
+                        <td class="col-3 text-center">${valorVendaFormatado}</td>
+                        <td class="col-1">
+                            <button type="button" class="editVenda" data-codigoVenda="${vendedor.codigoVenda}" data-toggle="modal" data-target="#modalEditarContato">&#9998;</button>
+                        </td>
+                    </tr>`;
+                        tabela.innerHTML += novaLinha;
                 }
-
             }
 
             function formatarCodigo(codigo){
@@ -246,15 +336,14 @@
                     minimumFractionDigits: 2,
                     maximumFractionDigits: 2
                 })}`;
-
+                
                 return valorVendaFormatada;
             }
-
+            
             // Função para capitalizar a primeira letra de uma string
             function capitalizarPrimeiraLetra(string) {
                 return string.charAt(0).toUpperCase() + string.slice(1);
             }
-
 
             document.addEventListener('DOMContentLoaded', function(){
                 fetch(`http://localhost:5000/vendedores`)
@@ -266,6 +355,108 @@
                     .catch(error => console.error('Error:', error));
             });
 
+        
+
+            const editModal = document.getElementById("modalEditarContato");
+
+            document.addEventListener('DOMContentLoaded', function() {
+                const table = document.getElementById('aTable');
+
+                table.addEventListener('click', function(event) {
+                    if(event.target.classList.contains('editVenda')) {
+                        editModal.style.display = 'block';
+                        backOpacity.style.display = 'block';
+                        document.getElementById("codigoVendedorError").innerText = "";
+                        document.getElementById("editCodigoVendedor").style.borderColor = "";
+
+                        // Preencher os campos do modal de edição com os dados da venda
+                        const rowIndex = event.target.closest('tr').rowIndex;
+                        const venda = vendedores[rowIndex - 1];
+
+                        document.getElementById("editCodigoVendedor").value = venda.codigoVendedor;
+                        document.getElementById("editNome").value = venda.nome;
+                        document.getElementById("editCargo").value = venda.cargo;
+                        document.getElementById("editCodigoVenda").value = venda.codigoVenda;
+                        document.getElementById("editValorVenda").value = venda.valorVenda;
+                    }
+                });
+            });
+
+            document.getElementById("closeModal2").addEventListener('click', function(){
+                editModal.style.display = 'none';
+                backOpacity.style.display = 'none';
+            })
+
+            window.onclick = function(event){
+                if(event.target === editModal) {
+                    editModal.style.display = 'none';
+                    backOpacity.style.display = 'none';
+                }
+            }
+
+            document.getElementById("modalEditarContato").addEventListener('submit', function(event){
+                event.preventDefault();
+
+                let newCodigoVendedor = parseInt(document.getElementById("editCodigoVendedor").value, 10);
+                let newNome = document.getElementById("editNome").value;
+                let newCargo = document.getElementById("editCargo").value;
+                let newCodigoVenda = parseInt(document.getElementById("editCodigoVenda").value, 10);
+                let newValorVenda = parseFloat(document.getElementById("editValorVenda").value);
+
+                // Encontrar o índice da venda no array pelo código da venda
+                const index = vendedores.findIndex(v => v.codigoVenda === newCodigoVenda);
+                const vendedorCodeAntigo = vendedores[index].codigoVendedor;
+                const index2 = vendedores.findIndex(v => v.codigoVendedor === vendedorCodeAntigo);
+
+                const findExistingCode = vendedores.findIndex(v => v.codigoVendedor === newCodigoVendedor);
+                
+                if(findExistingCode === -1){
+                    if(index2 !== -1){
+                        if(vendedores[index2].codigoVendedor !== newCodigoVendedor) {
+                            vendedores.forEach((v, i) => {
+                                if (v.codigoVendedor === vendedorCodeAntigo) {
+                                    vendedores[i].codigoVendedor = newCodigoVendedor;
+                                }
+                            });
+                            console.log(`Código atualizado para ${newCodigoVendedor} para todas as vendas de ${newNome}`);
+                        }
+                    }
+                } else if(vendedores[index2].codigoVendedor !== newCodigoVendedor){
+                    document.getElementById("editCodigoVendedor").style.borderColor = "red";
+                    document.getElementById("codigoVendedorError").innerText = "Código do vendedor já existe. Escolha outro código.";
+                    return;
+                }
+
+                if(index !== -1) {
+                    // Atualizar os dados da venda no array
+                    vendedores[index].valorVenda = newValorVenda;
+
+                    // Se o cargo foi alterado, atualize o cargo para todas as vendas do mesmo vendedor
+                    if(vendedores[index].cargo !== newCargo) {
+                        const vendedorCaargoAntigo = vendedores[index].cargo;
+                        vendedores.forEach((v, i) => {
+                            if (v.codigoVendedor === newCodigoVendedor) {
+                                vendedores[i].cargo = newCargo;
+                            }
+                        });
+                        console.log(`Cargo atualizado para ${newCargo} para todas as vendas de ${newNome}`);
+                    }
+                    if(vendedores[index].nome !== newNome) {
+                        const vendedorNaameAntigo = vendedores[index].nome;
+                        vendedores.forEach((v, i) => {
+                            if (v.codigoVendedor === newCodigoVendedor) {
+                                vendedores[i].nome = newNome;
+                            }
+                        });
+                        console.log(`Nome atualizado para ${newNome} para todas as vendas de ${newCodigoVendedor}`);
+                    }
+                }
+
+                renderizarTabela();
+                editModal.style.display = 'none';
+                backOpacity.style.display = 'none';
+            });
+
         </script>
     </body>
-</html>
+    </html>
