@@ -179,7 +179,9 @@
                                 </div>
                             </div>
                             <hr />
-                            <button type="submit" class="btn btn-primary">Salvar Contato</button>
+                            <div style="text-align: right;">
+                                <button type="submit" class="btn btn-primary">Salvar Venda</button>
+                            </div>
                         </form>
                     </div>
                 </div>
@@ -223,7 +225,12 @@
                                 </div>
                             </div>
                             <hr />
-                            <button type="submit" class="btn btn-primary">Salvar Edição</button>
+                            <div style="text-align: right;">
+                                <button type="submit" class="btn btn-primary">Salvar Edição</button>
+                                <span class="buttonDelete">
+                                    <button type="button" class="btn btn-primary">Deletar Venda</button>
+                                </span>
+                            </div>
                         </form>
                     </div>
                 </div>
@@ -248,12 +255,12 @@
                 backOpacity.style.display = 'none';
             })
 
-            window.onclick = function(event){
-                if(event.target === abrirModal) {
+            window.addEventListener('click', function(event) {
+                if (event.target === abrirModal) {
                     abrirModal.style.display = 'none';
                     backOpacity.style.display = 'none';
                 }
-            }
+            });
             
             document.getElementById("addVendedor").addEventListener('submit', function(event){
                 event.preventDefault();
@@ -455,6 +462,26 @@
                 renderizarTabela();
                 editModal.style.display = 'none';
                 backOpacity.style.display = 'none';
+
+            });
+
+            // Ouvinte de evento para o botão "Deletar Venda"
+            document.querySelector('.buttonDelete button').addEventListener('click', function() {
+                let newCodigoVenda = parseInt(document.getElementById("editCodigoVenda").value, 10);
+                let newCodigoVendedor = parseInt(document.getElementById("editCodigoVendedor").value, 10);
+                const index = vendedores.findIndex(v => v.codigoVenda === newCodigoVenda);
+
+                if (confirm("Tem certeza que deseja deletar esta venda?")) {
+                    // Deletar a venda do array
+                    if (index !== -1) {
+                        vendedores.splice(index, 1);
+                        console.log(`Venda do vendedor ${newCodigoVendedor}, código ${newCodigoVenda} deletada.`);
+                    }
+
+                    renderizarTabela();
+                    editModal.style.display = 'none';
+                    backOpacity.style.display = 'none';
+                }
             });
 
         </script>
