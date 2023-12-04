@@ -490,7 +490,7 @@
                 if (confirm("Tem certeza que deseja deletar esta venda?")) {
                     // Deletar a venda do array
                     if (index !== -1) {
-                        vendedores.splice(index, 1);
+                        excluirVenda(newCodigoVenda);
                         console.log(`Venda do vendedor ${newCodigoVendedor}, código ${newCodigoVenda} deletada.`);
                     }
 
@@ -499,6 +499,24 @@
                     backOpacity.style.display = 'none';
                 }
             });
+
+            function excluirVenda(codigoVenda) {
+                fetch(`http://localhost:5000/vendas/${codigoVenda}`, {
+                    method: 'DELETE',
+                })
+                .then(response => {
+                    if (!response.ok) {
+                        throw new Error(`Erro ao excluir a venda: ${response.statusText}`);
+                    }
+                    return response.json();
+                })
+                .then(data => {
+                    vendedores = data;
+                    renderizarTabela();
+                    // Adicione qualquer outra lógica necessária após a exclusão da venda
+                })
+                .catch(error => console.error('Error:', error));
+            }
         
         </script>
     </body>

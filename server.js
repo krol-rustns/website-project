@@ -64,7 +64,7 @@ const server = http.createServer(function(req, res){
     res.setHeader('Content-Type', 'application/json');
 
     res.setHeader('Access-Control-Allow-Origin', '*');
-    res.setHeader('Access-Control-Allow-Methods', 'GET, POST, OPTIONS, PUT');
+    res.setHeader('Access-Control-Allow-Methods', 'GET, POST, OPTIONS, PUT, DELETE');
     res.setHeader('Access-Control-Allow-Headers', 'Content-Type');
 
     if (req.method === 'OPTIONS') {
@@ -126,6 +126,22 @@ const server = http.createServer(function(req, res){
                 res.end(JSON.stringify({ error: 'Venda não encontrada' }));
             }
         });
+    } else if(req.url.startsWith('/vendas/') && req.method === 'DELETE'){
+        const codigoVenda = req.url.split('/')[2];
+    
+        // Encontrar a venda pelo código da venda
+        const vendaIndex = vendedores.findIndex(v => v.codigoVenda === parseInt(codigoVenda, 10));
+    
+        if (vendaIndex !== -1) {
+            // Remover a venda encontrada
+            vendedores.splice(vendaIndex, 1);
+    
+            res.statusCode = 200;
+            res.end(JSON.stringify(vendedores));
+        } else {
+            res.statusCode = 404;
+            res.end(JSON.stringify({ error: 'Venda não encontrada' }));
+        }
     } else {
         res.statusCode = 404;
         res.end(JSON.stringify({ error: 'Rota não encontrada' }));
