@@ -296,7 +296,6 @@
                 .then(response => response.json())
                 .then(data => {
                     vendedores = data;
-                    verifyNewVenda(codigoVendedor, nome, cargo);
                     renderizarTabela();
                     document.getElementById("addVendedor").reset();
                     abrirModal.style.display = 'none';
@@ -304,26 +303,6 @@
                 })
                 .catch(error => console.error('Error:', error));
             })
-            
-            function verifyNewVenda(codigoVendedor, nome, cargo){
-                const indexVendedores = vendedores.findIndex(v => v.codigoVendedor === codigoVendedor);
-                if(vendedores[indexVendedores].cargo !== cargo) {
-                    const vendedorCargoAntigo = vendedores[indexVendedores].cargo;
-                    vendedores.forEach((v, i) => {
-                        if(v.codigoVendedor === codigoVendedor) {
-                            vendedores[i].cargo = cargo;
-                        }
-                    });
-                }
-                if(vendedores[indexVendedores].nome !== nome) {
-                    const vendedorNomeAntigo = vendedores[indexVendedores].nome;
-                    vendedores.forEach((v, i) => {
-                        if(v.codigoVendedor === codigoVendedor) {
-                            vendedores[i].nome = vendedorNomeAntigo;
-                        }
-                    });
-                }
-            }
 
             function renderizarTabela(){
                 let tabela = document.querySelector('.table tbody');
@@ -479,9 +458,26 @@
                     }
                 }
 
-                renderizarTabela();
-                editModal.style.display = 'none';
-                backOpacity.style.display = 'none';
+                fetch(`http://localhost:5000/vendas/${newCodigoVenda}`, {
+                    method: 'PUT',
+                    headers: {
+                        'Content-Type': 'application/json',
+                    },
+                    body: JSON.stringify({
+                        codigoVendedor: newCodigoVendedor,
+                        nome: newNome,
+                        cargo: newCargo,
+                        valorVenda: newValorVenda,
+                    }),
+                })
+                .then(response => response.json())
+                .then(data => {
+                    vendedores = data;
+                    renderizarTabela();
+                    editModal.style.display = 'none';
+                    backOpacity.style.display = 'none';
+                })
+                .catch(error => console.error('Error:', error));
 
             });
 

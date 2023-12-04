@@ -64,7 +64,7 @@ const server = http.createServer(function(req, res){
     res.setHeader('Content-Type', 'application/json');
 
     res.setHeader('Access-Control-Allow-Origin', '*');
-    res.setHeader('Access-Control-Allow-Methods', 'GET, POST, OPTIONS');
+    res.setHeader('Access-Control-Allow-Methods', 'GET, POST, OPTIONS, PUT');
     res.setHeader('Access-Control-Allow-Headers', 'Content-Type');
 
     if (req.method === 'OPTIONS') {
@@ -91,6 +91,40 @@ const server = http.createServer(function(req, res){
 
             res.statusCode = 200;
             res.end(JSON.stringify(vendedores));
+        });
+    } else if(req.url.startsWith('/vendas/') && req.method === 'PUT'){
+        const codigoVenda = req.url.split('/')[2];
+
+        let body = '';
+
+        req.on('data', chunk => {
+            body += chunk.toString();
+        });
+
+        req.on('end', () => {
+            const dadosAtualizados = JSON.parse(body);
+
+            // Encontrar a venda pelo código da venda
+            const vendaAtualizadaIndex = vendedores.findIndex(v => v.codigoVenda === parseInt(codigoVenda, 10));
+
+            if (vendaAtualizadaIndex !== -1) {
+                // Obter o código do vendedor associado à venda que está sendo atualizada
+                const codigoVendedorAtualizado = vendedores[vendaAtualizadaIndex].codigoVendedor;
+
+                // Atualizar todas as vendas com o mesmo código de vendedor, exceto o valorVenda
+                vendedores.forEach((v, i) => {
+                    if (v.codigoVendedor === codigoVendedorAtualizado) {
+                        vendedores[i] = { ...v, ...dadosAtualizados };
+                        vendedores[i].valorVenda = v.codigoVenda === parseInt(codigoVenda, 10) ? dadosAtualizados.valorVenda : v.valorVenda;
+                    }
+                });
+
+                res.statusCode = 200;
+                res.end(JSON.stringify(vendedores));
+            } else {
+                res.statusCode = 404;
+                res.end(JSON.stringify({ error: 'Venda não encontrada' }));
+            }
         });
     } else {
         res.statusCode = 404;
