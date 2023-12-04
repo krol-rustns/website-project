@@ -39,7 +39,7 @@
             let vendedores = [];
 
             document.addEventListener('DOMContentLoaded', function(){
-                fetch(`http://localhost:5000/vendedores`)
+                fetch(`http://localhost:5000/vendas`)
                     .then(response => response.json())
                     .then(data => {
                         vendedores = data;

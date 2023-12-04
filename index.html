@@ -129,7 +129,7 @@
                 <h3>Vendas</h3>
                 <span>
                     <button id="btnAdd" type="button" class="btn btn-primary">+ Adicionar</button>
-                    <a href="C:\Users\nilva.costa.AGU\Downloads\webiste\relatorioVendas.html" target="_blank"><button id="btnGerar" type="button" class="btn btn-primary">Gerar relatório</button></a>
+                    <a href="C:\Users\nilva.costa\Documents\GitHub\website-project\relatorio.html" target="_blank"><button id="btnGerar" type="button" class="btn btn-primary">Gerar relatório</button></a>
                 </span>
             </div>
 
@@ -278,16 +278,34 @@
                 let codigoVenda = parseInt(document.getElementById("codigoVenda").value, 10);
                 let valorVenda = parseInt(document.getElementById("valorVenda").value, 10);
                 
-                const vendedor = {
+                const novoVendedor = {
                     codigoVendedor,
                     nome,
                     cargo,
                     codigoVenda,
                     valorVenda
                 };
-                
-                vendedores.push(vendedor);
 
+                fetch('http://localhost:5000/vendas', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json',
+                    },
+                    body: JSON.stringify(novoVendedor),
+                })
+                .then(response => response.json())
+                .then(data => {
+                    vendedores = data;
+                    verifyNewVenda(codigoVendedor, nome, cargo);
+                    renderizarTabela();
+                    document.getElementById("addVendedor").reset();
+                    abrirModal.style.display = 'none';
+                    backOpacity.style.display = 'none';
+                })
+                .catch(error => console.error('Error:', error));
+            })
+            
+            function verifyNewVenda(codigoVendedor, nome, cargo){
                 const indexVendedores = vendedores.findIndex(v => v.codigoVendedor === codigoVendedor);
                 if(vendedores[indexVendedores].cargo !== cargo) {
                     const vendedorCargoAntigo = vendedores[indexVendedores].cargo;
@@ -305,12 +323,7 @@
                         }
                     });
                 }
-
-                renderizarTabela();
-                document.getElementById("addVendedor").reset();
-                abrirModal.style.display = 'none';
-                backOpacity.style.display = 'none';
-            })
+            }
 
             function renderizarTabela(){
                 let tabela = document.querySelector('.table tbody');
@@ -360,7 +373,7 @@
             }
 
             document.addEventListener('DOMContentLoaded', function(){
-                fetch(`http://localhost:5000/vendedores`)
+                fetch(`http://localhost:5000/vendas`)
                     .then(response => response.json())
                     .then(data => {
                         vendedores = data;
