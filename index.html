@@ -4,6 +4,7 @@
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <title>Consórcios LTDA</title>
+        <link rel="icon" href="./img/logo_consorcio.png" type="image/x-icon">
         <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
         <style>
             .modalBackdrop{
@@ -160,15 +161,15 @@
                     <div class="modal-body">
                         <form id="addVendedor">
                             <div class="form-group">
-                                <label for="codigoVendedor">Código do Vendedor:</label>
-                                <input type="number" class="form-control" id="codigoVendedor" min="1" required>
-                            </div>
-                            <div class="form-group">
                                 <label for="nome">Nome:</label>
                                 <input type="text" class="form-control" id="nome" required>
                                 <div id="codigoVendedorErrorName" style="color: red;"></div>
                             </div>
                             <div class="form-row">
+                                <div class="form-group col-md-4">
+                                    <label for="codigoVendedor">Cód. do Vendedor:</label>
+                                    <input type="number" class="form-control" id="codigoVendedor" min="1" required>
+                                </div>
                                 <div class="form-group col-md-4">
                                     <label for="cargo">Cargo:</label>
                                     <select class="form-control" id="cargo" required>
@@ -177,10 +178,6 @@
                                       <option>Sênior</option>
                                     </select>
                                     <div id="codigoVendedorErrorPosition" style="color: red;"></div>
-                                </div>
-                                <div class="form-group col-md-4">
-                                    <label for="codigoVenda">Código da Venda:</label>
-                                    <input type="number" class="form-control" id="codigoVenda" min="1" required>
                                 </div>
                                 <div class="form-group col-md-4">
                                     <label for="valorVenda">Valor da Venda:</label>

@@ -4,6 +4,7 @@
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <title>Consórcios LTDA - Relatório de Vendas</title>
+        <link rel="icon" href="./img/logo_consorcio.png" type="image/x-icon">
         <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
         <style>
             body {
@@ -13,13 +14,23 @@
             .table {
                 color: #ffffff;
             }
+            .headerList {
+                display: flex;
+                align-items: center;
+                justify-content: space-between;
+                margin-bottom: 4px;
+            }
         </style>
     </head>
 
     <body>
         <div class="container m-auto" style="padding-top: 25px;">
-            <h4 class="text-center">Relatório de Vendas</h4>
-
+            <div class="headerList">
+                <h4>Relatório de Vendas</h4>
+                <span>
+                    <button id="btnPrint" type="button" class="btn btn-primary" onclick="window.print()">Imprimir</button>
+                </span>
+            </div>
             <table class="table table-hover">
                 <thead>
                     <tr class="text-center">
