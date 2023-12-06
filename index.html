@@ -284,18 +284,18 @@
                 let codigoVendedor = parseInt(document.getElementById("codigoVendedor").value, 10);
                 let nome = document.getElementById("nome").value;
                 let cargo = document.getElementById("cargo").value;
-                let codigoVenda = parseInt(document.getElementById("codigoVenda").value, 10);
                 let valorVenda = parseInt(document.getElementById("valorVenda").value, 10);
+                nome = capitalizarPrimeiraLetra(nome);
 
-                const index = vendedores.findIndex(v => v.codigoVendedor === codigoVendedor);
+                const index = vendedores.findIndex(v => v.codVendedor === codigoVendedor);
 
                 if(index !== -1){
-                    if(vendedores[index].nome !== nome) {
+                    if(vendedores[index].nomeVendedor !== nome) {
                         document.getElementById("nome").style.borderColor = "red";
                         document.getElementById("codigoVendedorErrorName").innerText = "O nome não corresponde ao código de vendedor existente.";
                         return;
                     }
-                    if(vendedores[index].cargo !== cargo) {
+                    if(vendedores[index].cargoVendedor !== cargo) {
                         document.getElementById("cargo").style.borderColor = "red";
                         document.getElementById("codigoVendedorErrorPosition").innerText = "O cargo não corresponde ao código de vendedor existente.";
                         return;
@@ -306,7 +306,6 @@
                     codigoVendedor,
                     nome,
                     cargo,
-                    codigoVenda,
                     valorVenda
                 };
 
@@ -333,22 +332,21 @@
                 tabela.innerHTML = '';
                 
                 for(let vendedor of vendedores){
-                    let codigoVendedorSemZero = parseInt(vendedor.codigoVendedor, 10);
-                    let codigoVendaSemZero = parseInt(vendedor.codigoVenda, 10);
+                    let codigoVendedorSemZero = parseInt(vendedor.codVendedor, 10);
+                    let codigoVendaSemZero = parseInt(vendedor.codVenda, 10);
                     let codigoVendedorFormatado = formatarCodigo(codigoVendedorSemZero);
                     let codigoVendaFormatado = formatarCodigo(codigoVendaSemZero);
                     let valorVendaFormatado = formatarValor(vendedor.valorVenda);
-                    let nomeFormatado = capitalizarPrimeiraLetra(vendedor.nome);
                     
                     let novaLinha = `
                     <tr class="text-center">
                         <td class="col-1 text-center">${codigoVendedorFormatado}</td>
-                        <td class="col-3 text-center">${nomeFormatado}</td>
-                        <td class="col-1">${vendedor.cargo}</td>
+                        <td class="col-3 text-center">${vendedor.nomeVendedor}</td>
+                        <td class="col-1">${vendedor.cargoVendedor}</td>
                         <td class="col-1">${codigoVendaFormatado}</td>
                         <td class="col-3 text-center">${valorVendaFormatado}</td>
                         <td class="col-1">
-                            <button type="button" class="editVenda" data-codigoVenda="${vendedor.codigoVenda}" data-toggle="modal" data-target="#modalEditarContato">&#9998;</button>
+                            <button type="button" class="editVenda" data-codigoVenda="${vendedor.codVenda}" data-toggle="modal" data-target="#modalEditarContato">&#9998;</button>
                         </td>
                     </tr>`;
                         tabela.innerHTML += novaLinha;
@@ -403,10 +401,10 @@
                         const rowIndex = event.target.closest('tr').rowIndex;
                         const venda = vendedores[rowIndex - 1];
 
-                        document.getElementById("editCodigoVendedor").value = venda.codigoVendedor;
-                        document.getElementById("editNome").value = venda.nome;
-                        document.getElementById("editCargo").value = venda.cargo;
-                        document.getElementById("editCodigoVenda").value = venda.codigoVenda;
+                        document.getElementById("editCodigoVendedor").value = venda.codVendedor;
+                        document.getElementById("editNome").value = venda.nomeVendedor;
+                        document.getElementById("editCargo").value = venda.cargoVendedor;
+                        document.getElementById("editCodigoVenda").value = venda.codVenda;
                         document.getElementById("editValorVenda").value = venda.valorVenda;
                     }
                 });
@@ -434,24 +432,24 @@
                 let newValorVenda = parseFloat(document.getElementById("editValorVenda").value);
 
                 // Encontrar o índice da venda no array pelo código da venda
-                const index = vendedores.findIndex(v => v.codigoVenda === newCodigoVenda);
-                const vendedorCodeAntigo = vendedores[index].codigoVendedor;
-                const index2 = vendedores.findIndex(v => v.codigoVendedor === vendedorCodeAntigo);
+                const index = vendedores.findIndex(v => v.codVenda === newCodigoVenda);
+                const vendedorCodeAntigo = vendedores[index].codVendedor;
+                const index2 = vendedores.findIndex(v => v.codVendedor === vendedorCodeAntigo);
 
-                const findExistingCode = vendedores.findIndex(v => v.codigoVendedor === newCodigoVendedor);
+                const findExistingCode = vendedores.findIndex(v => v.codVendedor === newCodigoVendedor);
                 
                 if(findExistingCode === -1){
                     if(index2 !== -1){
-                        if(vendedores[index2].codigoVendedor !== newCodigoVendedor) {
+                        if(vendedores[index2].codVendedor !== newCodigoVendedor) {
                             vendedores.forEach((v, i) => {
-                                if (v.codigoVendedor === vendedorCodeAntigo) {
-                                    vendedores[i].codigoVendedor = newCodigoVendedor;
+                                if (v.codVendedor === vendedorCodeAntigo) {
+                                    vendedores[i].codVendedor = newCodigoVendedor;
                                 }
                             });
                             console.log(`Código atualizado para ${newCodigoVendedor} para todas as vendas de ${newNome}`);
                         }
                     }
-                } else if(vendedores[index2].codigoVendedor !== newCodigoVendedor){
+                } else if(vendedores[index2].codVendedor !== newCodigoVendedor){
                     document.getElementById("editCodigoVendedor").style.borderColor = "red";
                     document.getElementById("codigoVendedorError").innerText = "Código do vendedor já existe. Escolha outro código.";
                     return;
@@ -462,20 +460,20 @@
                     vendedores[index].valorVenda = newValorVenda;
 
                     // Se o cargo foi alterado, atualize o cargo para todas as vendas do mesmo vendedor
-                    if(vendedores[index].cargo !== newCargo) {
-                        const vendedorCaargoAntigo = vendedores[index].cargo;
+                    if(vendedores[index].cargoVendedor !== newCargo) {
+                        const vendedorCaargoAntigo = vendedores[index].cargoVendedor;
                         vendedores.forEach((v, i) => {
-                            if (v.codigoVendedor === newCodigoVendedor) {
-                                vendedores[i].cargo = newCargo;
+                            if (v.codVendedor === newCodigoVendedor) {
+                                vendedores[i].cargoVendedor = newCargo;
                             }
                         });
                         console.log(`Cargo atualizado para ${newCargo} para todas as vendas de ${newNome}`);
                     }
-                    if(vendedores[index].nome !== newNome) {
-                        const vendedorNaameAntigo = vendedores[index].nome;
+                    if(vendedores[index].nomeVendedor !== newNome) {
+                        const vendedorNaameAntigo = vendedores[index].nomeVendedor;
                         vendedores.forEach((v, i) => {
-                            if (v.codigoVendedor === newCodigoVendedor) {
-                                vendedores[i].nome = newNome;
+                            if (v.codVendedor === newCodigoVendedor) {
+                                vendedores[i].nomeVendedor = newNome;
                             }
                         });
                         console.log(`Nome atualizado para ${newNome} para todas as vendas de ${newCodigoVendedor}`);
@@ -492,6 +490,7 @@
                         nome: newNome,
                         cargo: newCargo,
                         valorVenda: newValorVenda,
+                        codigoAntigo: vendedorCodeAntigo,
                     }),
                 })
                 .then(response => response.json())
@@ -509,7 +508,7 @@
             document.querySelector('.buttonDelete button').addEventListener('click', function() {
                 let newCodigoVenda = parseInt(document.getElementById("editCodigoVenda").value, 10);
                 let newCodigoVendedor = parseInt(document.getElementById("editCodigoVendedor").value, 10);
-                const index = vendedores.findIndex(v => v.codigoVenda === newCodigoVenda);
+                const index = vendedores.findIndex(v => v.codVenda === newCodigoVenda);
 
                 if (confirm("Tem certeza que deseja deletar esta venda?")) {
                     // Deletar a venda do array

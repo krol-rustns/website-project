@@ -55,12 +55,12 @@
                 // Agrupar as vendas por vendedor
                 let vendasAgrupadas = {};
                 for (let vendedor of vendedores) {
-                    let codigoVendedorSemZero = parseInt(vendedor.codigoVendedor, 10);
+                    let codigoVendedorSemZero = parseInt(vendedor.codVendedor, 10);
 
                     if (!vendasAgrupadas[codigoVendedorSemZero]) {
                         vendasAgrupadas[codigoVendedorSemZero] = {
-                            nome: vendedor.nome,
-                            cargo: vendedor.cargo,
+                            nome: vendedor.nomeVendedor,
+                            cargo: vendedor.cargoVendedor,
                             totalVendas: 0,
                             maiorVenda: 0,
                             comissao: 0
@@ -97,11 +97,10 @@
                     }
 
                     let comissaoFormatada = formatarValor(comissao);
-                    let nomeFormatado = capitalizarPrimeiraLetra(vendedor.nome);
 
                     let novaLinha = `
                         <tr class="text-center">
-                            <td>${nomeFormatado}</td>
+                            <td>${vendedor.nome}</td>
                             <td>${vendedor.cargo}</td>
                             <td>${valorVendaFormatado}</td>
                             <td>${maiorVendaFormatada}</td>
@@ -121,12 +120,6 @@
                 return valorVendaFormatada;
             }
 
-            // Função para capitalizar a primeira letra de uma string
-            function capitalizarPrimeiraLetra(string) {
-                return string.charAt(0).toUpperCase() + string.slice(1);
-            }
-
-        
         </script>
     </body>
 </html>

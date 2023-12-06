@@ -1,64 +1,60 @@
 const http = require('http');
+const sqlite3 = require('sqlite3').verbose();
+const db = new sqlite3.Database('database.sqlite3', (err) => {
+    if (err) {
+        console.error('Erro ao abrir o banco de dados:', err.message);
+    } else {
+        console.log('Conexão com o banco de dados estabelecida.');
+    }
+});
 const { parse } = require('querystring');
 
-let vendedores = [
-    {
-        codigoVendedor: 1,
-        nome: "Paulo Oliveira",
-        cargo: "Pleno",
-        codigoVenda: 2,
-        valorVenda: 65889.00
-    },
-    {
-        codigoVendedor: 4,
-        nome: "carlos sanchez",
-        cargo: "Júnior",
-        codigoVenda: 10,
-        valorVenda: 5.00
-    },
-    {
-        codigoVendedor: 1,
-        nome: "Paulo",
-        cargo: "Pleno",
-        codigoVenda: 16,
-        valorVenda: 5.00
-    },
-    {
-        codigoVendedor: 3,
-        nome: "Laura Cardozo Alves",
-        cargo: "Sênior",
-        codigoVenda: 0o1,
-        valorVenda: 2235000.00
-    },
-    {
-        codigoVendedor: 1,
-        nome: "Paulo Oliveira",
-        cargo: "Pleno",
-        codigoVenda: 5,
-        valorVenda: 70889.00
-    },
-    {
-        codigoVendedor: 2,
-        nome: "Arnaldo dos Santos",
-        cargo: "Júnior",
-        codigoVenda: 4,
-        valorVenda: 5102.00
-    },
-    {
-        codigoVendedor: 4,
-        nome: "Carlos Sánchez",
-        cargo: "Júnior",
-        codigoVenda: 3,
-        valorVenda: 18655.00
-    },
-    {
-        codigoVendedor: 2,
-        nome: "arnaldo dos Santos",
-        cargo: "Júnior",
-        codigoVenda: 9,
-        valorVenda: 2.00
-    },
-];
+//let vendedores = [];
+
+db.serialize(() => {
+    // Crie a tabela se não existir
+    db.run(`
+        CREATE TABLE IF NOT EXISTS vendas (
+            codVendedor INTEGER,
+            nomeVendedor TEXT,
+            cargoVendedor TEXT,
+            codVenda INTEGER PRIMARY KEY,
+            valorVenda REAL
+        )
+    `);
+
+    db.get('SELECT COUNT(*) as count FROM vendas', (err, result) => {
+        if (err) {
+            console.error('Erro ao verificar se a tabela está vazia:', err.message);
+        } else {
+            const rowCount = result.count;
+    
+            // Se a tabela está vazia, execute o código de inserção
+            if (rowCount === 0) {
+                db.run(`
+                    INSERT INTO vendas (codVendedor, nomeVendedor, cargoVendedor, valorVenda)
+                    VALUES
+                        (1, 'Paulo Oliveira', 'Pleno', 65889.00),
+                        (4, 'Carlos Sanchez', 'Júnior', 5.00),
+                        (1, 'Paulo Oliveira', 'Pleno', 65889.00),
+                        (3, 'Laura Cardozo Alves', 'Sênior', 2235000.00),
+                        (1, 'Paulo Oliveira', 'Pleno', 70889.00),
+                        (2, 'Arnaldo dos Santos', 'Júnior', 5102.00),
+                        (4, 'Carlos Sanchez', 'Júnior', 18655.00),
+                        (2, 'Arnaldo dos Santos', 'Júnior', 2.00)
+                `, (insertErr) => {
+                    if (insertErr) {
+                        console.error('Erro ao inserir dados na tabela:', insertErr.message);
+                    } else {
+                        console.log('Dados inseridos com sucesso.');
+                    }
+                });
+            } else {
+                console.log('A tabela já contém dados. Nenhuma inserção foi realizada.');
+            }
+        }
+    });
+});
 
 const server = http.createServer(function(req, res){
     res.setHeader('Content-Type', 'application/json');
@@ -74,8 +70,15 @@ const server = http.createServer(function(req, res){
     }
 
     if(req.url === '/vendas' && req.method === 'GET'){
-        res.statusCode = 200;
-        res.end(JSON.stringify(vendedores));
+        db.all('SELECT * FROM vendas', [], (err, rows) => {
+            if (err) {
+                res.statusCode = 500;
+                res.end(JSON.stringify({ error: 'Erro ao buscar as vendas no banco de dados' }));
+            } else {
+                res.statusCode = 200;
+                res.end(JSON.stringify(rows));
+            }
+        });
     } else if(req.url === '/vendas' && req.method === 'POST'){
         let body = '';
 
@@ -84,13 +87,25 @@ const server = http.createServer(function(req, res){
         });
 
         req.on('end', () => {
-            const novoVendedor = JSON.parse(body);
+            const novaVenda = JSON.parse(body);
 
-            // Adicionar o novo vendedor ao array de vendedores
-            vendedores.push(novoVendedor);
-
-            res.statusCode = 200;
-            res.end(JSON.stringify(vendedores));
+            db.run('INSERT INTO vendas (codVendedor, nomeVendedor, cargoVendedor, valorVenda) VALUES (?, ?, ?, ?)', [novaVenda.codigoVendedor, novaVenda.nome, novaVenda.cargo, novaVenda.valorVenda], function (err) {
+                if (err) {
+                    res.statusCode = 500;
+                    res.end(JSON.stringify({ error: 'Erro ao inserir a venda no banco de dados' }));
+                } else {
+                    // Após a inserção, retorne os dados atualizados
+                    db.all('SELECT * FROM vendas', [], (err, rows) => {
+                        if (err) {
+                            res.statusCode = 500;
+                            res.end(JSON.stringify({ error: 'Erro ao buscar as vendas no banco de dados' }));
+                        } else {
+                            res.statusCode = 200;
+                            res.end(JSON.stringify(rows));
+                        }
+                    });
+                }
+            });
         });
     } else if(req.url.startsWith('/vendas/') && req.method === 'PUT'){
         const codigoVenda = req.url.split('/')[2];
@@ -104,44 +119,72 @@ const server = http.createServer(function(req, res){
         req.on('end', () => {
             const dadosAtualizados = JSON.parse(body);
 
-            // Encontrar a venda pelo código da venda
-            const vendaAtualizadaIndex = vendedores.findIndex(v => v.codigoVenda === parseInt(codigoVenda, 10));
-
-            if (vendaAtualizadaIndex !== -1) {
-                // Obter o código do vendedor associado à venda que está sendo atualizada
-                const codigoVendedorAtualizado = vendedores[vendaAtualizadaIndex].codigoVendedor;
-
-                // Atualizar todas as vendas com o mesmo código de vendedor, exceto o valorVenda
-                vendedores.forEach((v, i) => {
-                    if (v.codigoVendedor === codigoVendedorAtualizado) {
-                        vendedores[i] = { ...v, ...dadosAtualizados };
-                        vendedores[i].valorVenda = v.codigoVenda === parseInt(codigoVenda, 10) ? dadosAtualizados.valorVenda : v.valorVenda;
+            db.serialize(() => {
+                // Iniciar uma transação
+                db.run('BEGIN TRANSACTION');
+            
+                // Atualizar a venda específica
+                db.run('UPDATE vendas SET codVendedor=?, nomeVendedor=?, cargoVendedor=?, valorVenda=? WHERE codVenda=?', [dadosAtualizados.codigoVendedor, dadosAtualizados.nome, dadosAtualizados.cargo, dadosAtualizados.valorVenda, codigoVenda], function (err) {
+                    if (err) {
+                        // Se houver um erro, rollback da transação e retorne um erro
+                        db.run('ROLLBACK');
+                        res.statusCode = 500;
+                        res.end(JSON.stringify({ error: 'Erro ao atualizar a venda no banco de dados' }));
                     }
                 });
-
-                res.statusCode = 200;
-                res.end(JSON.stringify(vendedores));
-            } else {
-                res.statusCode = 404;
-                res.end(JSON.stringify({ error: 'Venda não encontrada' }));
-            }
+            
+                // Atualizar outras vendas com o mesmo codigoVendedor, exceto a venda específica
+                db.run('UPDATE vendas SET codVendedor=?, nomeVendedor=?, cargoVendedor=? WHERE codVenda<>? AND codVendedor=?', [dadosAtualizados.codigoVendedor, dadosAtualizados.nome, dadosAtualizados.cargo, codigoVenda, dadosAtualizados.codigoAntigo], function (err) {
+                    if (err) {
+                        // Se houver um erro, rollback da transação e retorne um erro
+                        db.run('ROLLBACK');
+                        res.statusCode = 500;
+                        res.end(JSON.stringify({ error: 'Erro ao atualizar outras vendas no banco de dados' }));
+                    }
+                });
+            
+                // Finalizar a transação
+                db.run('COMMIT', function (err) {
+                    if (err) {
+                        // Se houver um erro, rollback da transação e retorne um erro
+                        db.run('ROLLBACK');
+                        res.statusCode = 500;
+                        res.end(JSON.stringify({ error: 'Erro ao finalizar a transação no banco de dados' }));
+                    } else {
+                        db.all('SELECT * FROM vendas', [], (err, rows) => {
+                            if (err) {
+                                res.statusCode = 500;
+                                res.end(JSON.stringify({ error: 'Erro ao buscar as vendas no banco de dados' }));
+                            } else {
+                                res.statusCode = 200;
+                                res.end(JSON.stringify(rows));
+                            }
+                        });
+                    }
+                });
+            });
         });
+    
     } else if(req.url.startsWith('/vendas/') && req.method === 'DELETE'){
         const codigoVenda = req.url.split('/')[2];
     
-        // Encontrar a venda pelo código da venda
-        const vendaIndex = vendedores.findIndex(v => v.codigoVenda === parseInt(codigoVenda, 10));
+        db.run('DELETE FROM vendas WHERE codVenda=?', [codigoVenda], function (err) {
+            if (err) {
+                res.statusCode = 500;
+                res.end(JSON.stringify({ error: 'Erro ao excluir a venda do banco de dados' }));
+            } else {
+                db.all('SELECT * FROM vendas', [], (err, rows) => {
+                    if (err) {
+                        res.statusCode = 500;
+                        res.end(JSON.stringify({ error: 'Erro ao buscar as vendas no banco de dados' }));
+                    } else {
+                        res.statusCode = 200;
+                        res.end(JSON.stringify(rows));
+                    }
+                });
+            }
+        });
     
-        if (vendaIndex !== -1) {
-            // Remover a venda encontrada
-            vendedores.splice(vendaIndex, 1);
-    
-            res.statusCode = 200;
-            res.end(JSON.stringify(vendedores));
-        } else {
-            res.statusCode = 404;
-            res.end(JSON.stringify({ error: 'Venda não encontrada' }));
-        }
     } else {
         res.statusCode = 404;
         res.end(JSON.stringify({ error: 'Rota não encontrada' }));
@@ -149,6 +192,31 @@ const server = http.createServer(function(req, res){
 });
 
 const PORT = 5000;
+
+// Lidar com SIGINT (Ctrl+C) para encerrar o servidor corretamente
+process.on('SIGINT', () => {
+    console.log('\nRecebido SIGINT. Encerrando o servidor...');
+    
+    // Adicione qualquer lógica de encerramento necessária aqui
+
+    // Encerrar o servidor
+    server.close(() => {
+        console.log('Servidor encerrado.');
+
+        // Adicionar lógica para fechar a conexão com o banco de dados
+        db.close((err) => {
+            if (err) {
+                console.error('Erro ao fechar o banco de dados:', err.message);
+            } else {
+                console.log('Conexão com o banco de dados fechada.');
+            }
+
+            // Feche qualquer outra coisa que você precise encerrar
+            process.exit(0);
+        });
+    });
+});
+
 server.listen(PORT, function(){
     console.log(`Servidor rodando em http://localhost:${PORT}`);
 });
