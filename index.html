@@ -166,6 +166,7 @@
                             <div class="form-group">
                                 <label for="nome">Nome:</label>
                                 <input type="text" class="form-control" id="nome" required>
+                                <div id="codigoVendedorErrorName" style="color: red;"></div>
                             </div>
                             <div class="form-row">
                                 <div class="form-group col-md-4">
@@ -175,7 +176,8 @@
                                       <option>Pleno</option>
                                       <option>Sênior</option>
                                     </select>
-                                  </div>
+                                    <div id="codigoVendedorErrorPosition" style="color: red;"></div>
+                                </div>
                                 <div class="form-group col-md-4">
                                     <label for="codigoVenda">Código da Venda:</label>
                                     <input type="number" class="form-control" id="codigoVenda" min="1" required>
@@ -254,7 +256,10 @@
             addVenda.addEventListener('click', function(){
                 abrirModal.style.display = 'block';
                 backOpacity.style.display = 'block';
-                
+                document.getElementById("codigoVendedorErrorName").innerText = "";
+                document.getElementById("codigoVendedorErrorPosition").innerText = "";
+                document.getElementById("nome").style.borderColor = "";
+                document.getElementById("cargo").style.borderColor = "";
             })
 
             document.getElementById("closeModal").addEventListener('click', function(){
@@ -271,12 +276,31 @@
             
             document.getElementById("addVendedor").addEventListener('submit', function(event){
                 event.preventDefault();
+                document.getElementById("codigoVendedorErrorName").innerText = "";
+                document.getElementById("codigoVendedorErrorPosition").innerText = "";
+                document.getElementById("nome").style.borderColor = "";
+                document.getElementById("cargo").style.borderColor = "";
                 
                 let codigoVendedor = parseInt(document.getElementById("codigoVendedor").value, 10);
                 let nome = document.getElementById("nome").value;
                 let cargo = document.getElementById("cargo").value;
                 let codigoVenda = parseInt(document.getElementById("codigoVenda").value, 10);
                 let valorVenda = parseInt(document.getElementById("valorVenda").value, 10);
+
+                const index = vendedores.findIndex(v => v.codigoVendedor === codigoVendedor);
+
+                if(index !== -1){
+                    if(vendedores[index].nome !== nome) {
+                        document.getElementById("nome").style.borderColor = "red";
+                        document.getElementById("codigoVendedorErrorName").innerText = "O nome não corresponde ao código de vendedor existente.";
+                        return;
+                    }
+                    if(vendedores[index].cargo !== cargo) {
+                        document.getElementById("cargo").style.borderColor = "red";
+                        document.getElementById("codigoVendedorErrorPosition").innerText = "O cargo não corresponde ao código de vendedor existente.";
+                        return;
+                    }
+                }
                 
                 const novoVendedor = {
                     codigoVendedor,
