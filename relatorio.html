@@ -55,9 +55,17 @@
             ::-webkit-scrollbar-thumb:hover {
             background-color: #9da4a5;
             }
+            .footer {
+                background-color: #1b1b1b;
+                height: 80px;
+                margin-top: 20px;
+                display: flex;
+                align-items: center;
+                justify-content: space-between;
+            }
             header {
                 background-color: #1b1b1b;
-                height: 120px;
+                height: 100px;
                 margin-bottom: 20px;
             }
             h1 {
@@ -65,7 +73,7 @@
                 font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
                 font-size: 3em;
                 font-weight: bold;
-                padding-top: 25px;
+                padding-top: 18px;
                 padding-left: 30px;
             }
             mark {
@@ -76,10 +84,27 @@
             a { 
                 cursor: pointer; /* Muda o cursor para uma mão ao passar o mouse sobre o link, indicando que é clicável */
             }
-
             a:hover {
                 color: #1b1b1b; /* Mantém a cor do texto igual à cor do texto do elemento pai ao passar o mouse sobre o link */
             }
+            .imgFooter {
+                margin-left: 50px;
+            }
+            .textFooter {
+                margin-right: 50px;
+            }
+            body {
+                display: flex;
+                flex-direction: column;
+                min-height: 100vh;
+            }
+            main {
+                flex: 1;
+            }
+            footer {
+                flex-shrink: 0;
+            }
+
         </style>
     </head>
 
@@ -111,6 +136,11 @@
                 <tbody class="corpo"></tbody>
             </table>
         </div>
+
+        <footer class="footer">
+            <img src="./img/logo_consorcio.png" alt="Logo da empresa" width="60" height="50" class="imgFooter">
+            <span class="textFooter">©2023 Consórcios LTDA</span>
+        </footer>
 
         <script>
             let vendedores = [];
