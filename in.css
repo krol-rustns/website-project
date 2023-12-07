@@ -1,10 +1,137 @@
+.modalBackdrop{
+  z-index: 1;
+  position:fixed;
+  top:0;
+  left:0;
+  width:100vw;
+  height:100vh;
+  background-color:rgba(0,0,0,0.2);
+  backdrop-filter: blur(5px);
+}
+.row {
+  display: flex;
+  justify-content: space-between;
+  margin: 10px 20px;
+}
+.table {
+  color: #ffffff;
+}
+.btn {
+  background-color: #F15001;
+  border-color: #F15001;
+}
+.btn:hover {
+  background-color: #f16620;
+  border-color: #F15001;
+}
+.btn:focus {
+  -moz-box-shadow: none !important;
+  -webkit-box-shadow: none !important;
+  box-shadow: none !important;
+}
+.modal {
+  color: #3f3d3d;
+}
+.form-control-margin{
+  margin-bottom: 0;
+}
+input, textarea {
+  padding: 8px 15px;
+  border-radius: 5px !important;
+  margin: 5px 0px;
+  box-sizing: border-box;
+  border: 1px solid #ccc;
+  font-size: 18px !important;
+  font-weight: 300
+}
+#cargo, #editCargo {
+  padding: 8px 15px;
+  border-radius: 5px !important;
+  margin: 5px 0px;
+  box-sizing: border-box;
+  border: 1px solid #ccc;
+  font-size: 18px !important;
+  font-weight: 300
+}
+input:focus, textarea:focus{
+  -moz-box-shadow: none !important;
+  -webkit-box-shadow: none !important;
+  box-shadow: none !important;
+  border: 1px solid #00BCD4;
+  outline-width: 0;
+  font-weight: 400
+}
+#cargo:focus, #editCargo:focus{
+  -moz-box-shadow: none !important;
+  -webkit-box-shadow: none !important;
+  box-shadow: none !important;
+  border: 1px solid #00BCD4;
+  outline-width: 0;
+  font-weight: 400
+}
+.headerList {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+.headerList h3 {
+  margin: 0;
+}
+.edit {
+  padding: 1px;
+  margin: 0px;
+  background-color: #3f3d3d;
+  border-style: none;
+}
+.bi-pencil-square {
+  color: white;
+  background-color: #3f3d3d;
+}
+.editVenda {
+  padding: 0px 3px;
+  margin: 0px;
+}
+form:invalid button {
+  opacity: 0.3;
+  pointer-events: none;
+}
+.modal-title {
+  padding-left: 130px;
+}
+.modal-title2 {
+  padding-left: 173px;
+  margin: 0px;
+}
+.editVenda {
+  visibility: hidden;
+}
+tr:hover .editVenda {
+  visibility: visible;
+}
+.table tbody tr:hover {
+  background-color: #2a2929; /* Cor de fundo quando passar o mouse */
+  color: #ffffff; /* Cor do texto quando passar o mouse */
+}
+.containerBig {
+  padding: 25px;
+  background-color: rgb(37, 37, 35);
+  box-shadow: 0 4px 28px rgba(123,151,158,.25);
+  border: 1px solid rgb(59, 59, 57);
+}
+body::-webkit-scrollbar {
+  display: none;
+}
+
+
+/* CSS main */
 body {
+  margin: 0;
+  padding: 0;
   background-color: #363636;
   font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
 }
 
 header {
-  margin: -8px;
   margin-top: -20px;
   height: 110px;
   width: 100%;
@@ -17,11 +144,15 @@ header {
   border: 1px solid rgba(27, 27, 27, 0.11);
 }
 
+ul {
+  margin: 0px;
+}
+
 #header{
   display: flex;
   justify-content: space-around;
   align-items: center;
-  height: 105px
+  height: 105px;
 }
 
 .cab{
@@ -37,7 +168,6 @@ header {
 .lg{
   width: 90px;
   height: 80px;
-  margin-top: 20px;
 }
 
 .pg{
@@ -51,6 +181,7 @@ header {
   color: whitesmoke;
   font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
   font-size: 3em;
+  margin-top: 10px;
 }
 
 .fon {
@@ -71,6 +202,7 @@ mark {
   color:#F15001 ;
   font-family:'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
   background-color: inherit;
+  padding: 0px;
 }
 
 .semSublinhado {
@@ -109,8 +241,19 @@ div.scrollmenu a:hover {
   display: flex;
   align-items: center;
   flex-direction: row;
-  margin-left: 10px;
-  margin-right: 10px;
+  margin-left: 25px;
+  margin-right: 25px;
+}
+
+#relatorioTextoss {
+  display: flex;
+  flex-direction: row;
+  
+}
+
+#relatorioTextoss h2 {
+  text-align: right;
+  margin-right: 35px;
 }
 
 .um{
@@ -125,15 +268,18 @@ div.scrollmenu a:hover {
   margin-right: 35px;
 }
 
-.blocos{
+.imagensss{
+  margin-left: 35px;
+}
+
+.blocos {
   background:  rgb(148, 113, 88);
   color: #fff;
   width: 100%;
   margin-top: 80px;
-  margin-left: 10px;
-  margin-right: 10px;
+  margin-left: 25px;
+  margin-right: 25px;
   padding-top: 2%;
-  padding-bottom: 2%;
   padding-left: 0.5%;
   padding-right: 0.5%;
   border-radius: 25px;
@@ -169,6 +315,7 @@ button:active {
 #ajuda{
   border-radius: 25px;
   margin-bottom: 80px;
+  padding-bottom: 14px;
 }
 
 .jj{
@@ -184,7 +331,12 @@ button:active {
   font-size: 20px;
 }
  
-a{
+a {
+  color: #fff;
+  text-decoration: none;
+}
+
+a:hover {
   color: #fff;
   text-decoration: none;
 }
@@ -292,6 +444,8 @@ a{
   display: flex; 
   justify-content: center;
   padding-top: 20px;
+  padding-left: 230px;
+  padding-right: 230px;
 }
 
 .col {
@@ -336,7 +490,6 @@ a{
 
 footer {
   background-color: #1b1b1b;
-  margin: -8px;
   height: 12%;
   color:white;
   display: flex;

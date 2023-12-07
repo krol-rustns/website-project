@@ -6,154 +6,104 @@
         <title>Consórcios LTDA</title>
         <link rel="icon" href="./img/logo_consorcio.png" type="image/x-icon">
         <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
-        <style>
-            .modalBackdrop{
-                position:fixed;
-                top:0;
-                left:0;
-                width:100vw;
-                height:100vh;
-                background-color:rgba(0,0,0,0.2);
-                backdrop-filter: blur(5px);
-            }
-            .row {
-                display: flex;
-                justify-content: space-between;
-                margin: 10px 20px;
-            }
-            body {
-                background-color: #3f3d3d;
-            }
-            .table {
-                color: #ffffff;
-            }
-            .btn {
-                background-color: #F15001;
-                border-color: #F15001;
-            }
-            .btn:hover {
-                background-color: #f16620;
-                border-color: #F15001;
-            }
-            .btn:focus {
-                -moz-box-shadow: none !important;
-                -webkit-box-shadow: none !important;
-                box-shadow: none !important;
-            }
-            .modal {
-                color: #3f3d3d;
-            }
-            .form-control-margin{
-                margin-bottom: 0;
-            }
-            input, textarea, button{
-                padding: 8px 15px;
-                border-radius: 5px !important;
-                margin: 5px 0px;
-                box-sizing: border-box;
-                border: 1px solid #ccc;
-                font-size: 18px !important;
-                font-weight: 300
-            }
-            #cargo, #editCargo {
-                padding: 8px 15px;
-                border-radius: 5px !important;
-                margin: 5px 0px;
-                box-sizing: border-box;
-                border: 1px solid #ccc;
-                font-size: 18px !important;
-                font-weight: 300
-            }
-            input:focus, textarea:focus{
-                -moz-box-shadow: none !important;
-                -webkit-box-shadow: none !important;
-                box-shadow: none !important;
-                border: 1px solid #00BCD4;
-                outline-width: 0;
-                font-weight: 400
-            }
-            #cargo:focus, #editCargo:focus{
-                -moz-box-shadow: none !important;
-                -webkit-box-shadow: none !important;
-                box-shadow: none !important;
-                border: 1px solid #00BCD4;
-                outline-width: 0;
-                font-weight: 400
-            }
-            .headerList {
-                display: flex;
-                align-items: center;
-                justify-content: space-between;
-            }
-            .headerList h3 {
-                margin: 0;
-            }
-            .edit {
-                padding: 1px;
-                margin: 0px;
-                background-color: #3f3d3d;
-                border-style: none;
-            }
-            .bi-pencil-square {
-                color: white;
-                background-color: #3f3d3d;
-            }
-            .editVenda {
-                padding: 0px 3px;
-                margin: 0px;
-            }
-            form:invalid button {
-                opacity: 0.3;
-                pointer-events: none;
-            }
-            .modal-title {
-                padding-left: 130px;
-            }
-            .modal-title2 {
-                padding-left: 173px;
-                margin: 0px;
-            }
-            .editVenda {
-                visibility: hidden;
-            }
-            tr:hover .editVenda {
-                visibility: visible;
-            }
-            .table tbody tr:hover {
-                background-color: #2a2929; /* Cor de fundo quando passar o mouse */
-                color: #ffffff; /* Cor do texto quando passar o mouse */
-            }
-            .containerBig {
-                padding: 25px;
-                background-color: rgb(37, 37, 35);
-                box-shadow: 0 4px 28px rgba(123,151,158,.25);
-                border: 1px solid rgb(59, 59, 57);
-            }
-            /* custom scrollbar */
-            ::-webkit-scrollbar {
-            width: 18px;
-            }
-            ::-webkit-scrollbar-track {
-            background-color: transparent;
-            }
-            ::-webkit-scrollbar-thumb {
-            background-color: #889498;
-            border-radius: 20px;
-            border: 6px solid transparent;
-            background-clip: content-box;
-            }
-            ::-webkit-scrollbar-thumb:hover {
-            background-color: #9da4a5;
-            }
-
-        </style>
+        <link rel="stylesheet" href="./in.css">
     </head>
+
     <body>
-        <div class="containerBig">
+        <header>
+            <div id="header">
+                <div class="cab">
+                    <img class="lg" src="./img/logo_consorcio.png">
+                    <h1 class="con">Consórcios <mark>LTDA</mark></h1>
+                </div>
+                <div>
+                    <ul>
+                        <a href="#conhecer"><button id="botao-quem-somos">Quem somos</button></a>
+                        <a href="#imgEmpresa"><button id="botao-para-voce">Para Você</button></a>
+                        <a href="#listaDeVendas"><button id="botao-relatorio">Vendas</button></a>
+                        <a href="#ajuda"><button id="botao-central-ajuda">Central de ajuda</button></a>
+                        <button onclick="openModal()">Acesso</button>   
+                    </ul>
+                </div>
+            </div>
+        </header>
+
+        <div class="mae">
+            <div class="carousel-container">
+                <div class="carousel-track">
+                    <div class="carousel-slide">
+                        <img class="bn" src="./img/banner1.png">
+                    </div>
+                    <div class="carousel-slide">
+                        <img class="bn" src="./img/banner2.png">
+                    </div>
+                    <div class="carousel-slide">
+                        <img class="bn" src="./img/banner3.png">
+                    </div>
+                </div>
+                <button class="carousel-button" id="prevBtn">&lt;</button>
+                <button class="carousel-button" id="nextBtn">&gt;</button>
+            </div>
+        </div>
+
+        <div id="imgEmpresa">
+            <div id="conhecer" class="blocos">
+                <div class="text">
+                    <h2 class="fon" style="font-size: 45px; font-weight: bold;">Conhecendo-nos</h2>
+                    <p class="um">Bem-vindo à <mark>Consórcios LTDA</mark>,a sua porta de entrada para realizar seus sonhos de
+                        forma planejada e acessível.
+                    Somos uma empresa especializada em consórcios, comprometida em oferecer soluções financeiras
+                        inteligentes para a realização dos seus objetivos,
+                        visando tornar o acesso a bens e serviços descomplicado e acessível a todos.
+                    Oferecemos também uma ampla gama de consórcios, adaptados às necessidades e desejos individuais de cada
+                        cliente. Seja a compra da casa própria,
+                        do carro dos sonhos, a reforma da casa ou a viagem tão esperada, temos planos que se encaixam
+                        perfeitamente no seu orçamento.</p>
+                </div>
+                <div class="imagenss">
+                    <img style="padding-bottom: 30px;" src="./img/note.jpg" width="400" height="300" alt="foto empresa"/>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-container">
+            <div class="col" style="background:rgb(37, 37, 35)">
+                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi" viewBox="0 0 16 16">
+                    <path d="M5.793 1a1 1 0 0 1 1.414 0l.647.646a.5.5 0 1 1-.708.708L6.5 1.707 2 6.207V12.5a.5.5 0 0 0 .5.5.5.5 0 0 1 0 1A1.5 1.5 0 0 1 1 12.5V7.207l-.146.147a.5.5 0 0 1-.708-.708zm3 1a1 1 0 0 1 1.414 0L12 3.793V2.5a.5.5 0 0 1 .5-.5h1a.5.5 0 0 1 .5.5v3.293l1.854 1.853a.5.5 0 0 1-.708.708L15 8.207V13.5a1.5 1.5 0 0 1-1.5 1.5h-8A1.5 1.5 0 0 1 4 13.5V8.207l-.146.147a.5.5 0 1 1-.708-.708zm.707.707L5 7.207V13.5a.5.5 0 0 0 .5.5h8a.5.5 0 0 0 .5-.5V7.207z"/>
+                </svg>
+                <p>Consórcios de Imóveis</p>
+                <button class="caix">Clique para mais</button>
+            </div>
+            <div class="col" style="background:rgb(37, 37, 35)">
+                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi" viewBox="0 0 16 16">
+                    <path d="M8 4.754a3.246 3.246 0 1 0 0 6.492 3.246 3.246 0 0 0 0-6.492zM5.754 8a2.246 2.246 0 1 1 4.492 0 2.246 2.246 0 0 1-4.492 0z"/>
+                    <path d="M9.796 1.343c-.527-1.79-3.065-1.79-3.592 0l-.094.319a.873.873 0 0 1-1.255.52l-.292-.16c-1.64-.892-3.433.902-2.54 2.541l.159.292a.873.873 0 0 1-.52 1.255l-.319.094c-1.79.527-1.79 3.065 0 3.592l.319.094a.873.873 0 0 1 .52 1.255l-.16.292c-.892 1.64.901 3.434 2.541 2.54l.292-.159a.873.873 0 0 1 1.255.52l.094.319c.527 1.79 3.065 1.79 3.592 0l.094-.319a.873.873 0 0 1 1.255-.52l.292.16c1.64.893 3.434-.902 2.54-2.541l-.159-.292a.873.873 0 0 1 .52-1.255l.319-.094c1.79-.527 1.79-3.065 0-3.592l-.319-.094a.873.873 0 0 1-.52-1.255l.16-.292c.893-1.64-.902-3.433-2.541-2.54l-.292.159a.873.873 0 0 1-1.255-.52l-.094-.319zm-2.633.283c.246-.835 1.428-.835 1.674 0l.094.319a1.873 1.873 0 0 0 2.693 1.115l.291-.16c.764-.415 1.6.42 1.184 1.185l-.159.292a1.873 1.873 0 0 0 1.116 2.692l.318.094c.835.246.835 1.428 0 1.674l-.319.094a1.873 1.873 0 0 0-1.115 2.693l.16.291c.415.764-.42 1.6-1.185 1.184l-.291-.159a1.873 1.873 0 0 0-2.693 1.116l-.094.318c-.246.835-1.428.835-1.674 0l-.094-.319a1.873 1.873 0 0 0-2.692-1.115l-.292.16c-.764.415-1.6-.42-1.184-1.185l.159-.291A1.873 1.873 0 0 0 1.945 8.93l-.319-.094c-.835-.246-.835-1.428 0-1.674l.319-.094A1.873 1.873 0 0 0 3.06 4.377l-.16-.292c-.415-.764.42-1.6 1.185-1.184l.292.159a1.873 1.873 0 0 0 2.692-1.115l.094-.319z"/>
+                </svg>          
+                <p>Consórcios de Serviços</p>
+                <button class="caix">Clique para mais</button>
+            </div>
+            <div class="col" style="background:rgb(37, 37, 35)">
+                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi" viewBox="0 0 16 16">
+                    <path d="M2.52 3.515A2.5 2.5 0 0 1 4.82 2h6.362c1 0 1.904.596 2.298 1.515l.792 1.848c.075.175.21.319.38.404.5.25.855.715.965 1.262l.335 1.679c.033.161.049.325.049.49v.413c0 .814-.39 1.543-1 1.997V13.5a.5.5 0 0 1-.5.5h-2a.5.5 0 0 1-.5-.5v-1.338c-1.292.048-2.745.088-4 .088s-2.708-.04-4-.088V13.5a.5.5 0 0 1-.5.5h-2a.5.5 0 0 1-.5-.5v-1.892c-.61-.454-1-1.183-1-1.997v-.413a2.5 2.5 0 0 1 .049-.49l.335-1.68c.11-.546.465-1.012.964-1.261a.807.807 0 0 0 .381-.404l.792-1.848ZM3 10a1 1 0 1 0 0-2 1 1 0 0 0 0 2m10 0a1 1 0 1 0 0-2 1 1 0 0 0 0 2M6 8a1 1 0 0 0 0 2h4a1 1 0 1 0 0-2zM2.906 5.189a.51.51 0 0 0 .497.731c.91-.073 3.35-.17 4.597-.17 1.247 0 3.688.097 4.597.17a.51.51 0 0 0 .497-.731l-.956-1.913A.5.5 0 0 0 11.691 3H4.309a.5.5 0 0 0-.447.276L2.906 5.19Z"/>
+                </svg>
+                <p>Consórcios de Automóveis</p>
+                <button class="caix">Clique para mais</button>
+            </div>
+            <div class="col" style="background:rgb(37, 37, 35)">
+                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi" viewBox="0 0 16 16">
+                    <path d="M8 0c-.787 0-1.292.592-1.572 1.151A4.347 4.347 0 0 0 6 3v3.691l-2 1V7.5a.5.5 0 0 0-.5-.5h-1a.5.5 0 0 0-.5.5v1.191l-1.17.585A1.5 1.5 0 0 0 0 10.618V12a.5.5 0 0 0 .582.493l1.631-.272.313.937a.5.5 0 0 0 .948 0l.405-1.214 2.21-.369.375 2.253-1.318 1.318A.5.5 0 0 0 5.5 16h5a.5.5 0 0 0 .354-.854l-1.318-1.318.375-2.253 2.21.369.405 1.214a.5.5 0 0 0 .948 0l.313-.937 1.63.272A.5.5 0 0 0 16 12v-1.382a1.5 1.5 0 0 0-.83-1.342L14 8.691V7.5a.5.5 0 0 0-.5-.5h-1a.5.5 0 0 0-.5.5v.191l-2-1V3c0-.568-.14-1.271-.428-1.849C9.292.591 8.787 0 8 0M7 3c0-.432.11-.979.322-1.401C7.542 1.159 7.787 1 8 1c.213 0 .458.158.678.599C8.889 2.02 9 2.569 9 3v4a.5.5 0 0 0 .276.447l5.448 2.724a.5.5 0 0 1 .276.447v.792l-5.418-.903a.5.5 0 0 0-.575.41l-.5 3a.5.5 0 0 0 .14.437l.646.646H6.707l.647-.646a.5.5 0 0 0 .14-.436l-.5-3a.5.5 0 0 0-.576-.411L1 11.41v-.792a.5.5 0 0 1 .276-.447l5.448-2.724A.5.5 0 0 0 7 7z"/>
+                </svg>
+                <p>Consórcios de Viagens</p>
+                <button class="caix">Clique para mais</button>
+            </div>
+        </div>
+
+        <!-- Lista de vendas -->
+        <div class="containerBig" id="listaDeVendas" style="margin: 100px 0px 40px;">
             <div class="container m-auto">
                 <div class="headerList">
-                    <h3 style="color: #ffffff;">Vendas</h3>
-                    <span>
+                    <h3 style="color: #ffffff; font-weight: bold;">VENDAS</h3>
+                    <span style="margin-bottom: 5px;">
                         <button id="btnAdd" type="button" class="btn btn-primary">+ Adicionar</button>
                         <a href="C:\Users\nilva.costa\Documents\GitHub\website-project\relatorio.html" target="_blank"><button id="btnGerar" type="button" class="btn btn-primary">Gerar relatório</button></a>
                     </span>
@@ -162,11 +112,11 @@
                 <table class="table table-hover" id="aTable">
                     <thead>
                         <tr class="text-center">
-                            <th class="col-2 text-center">Cód. do Vendedor</th>
-                            <th class="col-2 text-center">Nome</th>
-                            <th class="col-2">Cargo</th>
-                            <th class="col-3">Cód. da Venda</th>
-                            <th class="col-3 text-center">Valor da Venda</th>
+                            <th class="col-2 text-center" style="font-weight: normal;">Cód. do Vendedor</th>
+                            <th class="col-2 text-center" style="font-weight: normal;">Nome</th>
+                            <th class="col-2" style="font-weight: normal;">Cargo</th>
+                            <th class="col-3" style="font-weight: normal;">Cód. da Venda</th>
+                            <th class="col-3 text-center" style="font-weight: normal;">Valor da Venda</th>
                             <th></th>
                         </tr>
     
@@ -175,7 +125,116 @@
                 </table>
             </div>
         </div>
+        <!-- Fim lista de vendas parte 1-->
 
+        <div id="relatorio">
+            <div id="relatorioTextos" class="blocos" >
+                <div class="text" id="relatorioTextoss">
+                    <div class="imagensss">
+                        <img style="padding-top: 12px;" src="./img/transparency.jpg" width="400" height="300" alt="foto empresa e clientes"/>
+                    </div>
+                    <div>
+                        <h2 class="fon" style="font-size: 45px; font-weight: bold;">Transparência</h2>
+                        <p class="um">Na nossa abordagem, a transparência com os nossos clientes é fundamental. Acreditamos que a confiança é
+                        construída através da clareza e da abertura nas nossas operações. É por isso que nos comprometemos a
+                        fornecer relatórios detalhados sobre as comissões da nossa empresa.
+                        Valorizamos a compreensão mútua e acreditamos que ao compartilhar informações de forma transparente,
+                        fortalecemos os laços com nossos clientes, proporcionando-lhes a confiança necessária para tomar decisões
+                        informadas sobre seus investimentos em consórcio. Estamos empenhados em estabelecer uma relação de parceria
+                        duradoura, baseada na integridade e na transparência.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div id="central">
+            <div id="ajuda" class="blocos">
+                <h2 class="fon" style="font-size: 40px; font-weight: bold;">Central de ajuda</h2>
+                <div class="jj">
+                    <p class="duvida"><a href=""> Dúvidas frequentes</a></p>
+                    <p class="duvida"><a href=""> Fale conosco</a></p>
+                    <p class="duvida"><a href=""> Consulte boletos antigos</a></p>
+                    <p class="duvida"><a href=""> Regulamentos</a></p>
+                    <p class="duvida"><a href=""> Resultado das assembleias</a></p>
+                    <p class="duvida"><a href=""> Como gerenciar seus consórcios</a></p>
+                    <p class="duvida"><a href=""> Políticas da empresa</a></p>
+                </div>
+            </div>
+        </div>
+
+        <footer>
+            <div class="nu1">
+                <div class="bab">
+                    <img class="pg" src="./img/logo_consorcio.png">
+                    <h2 class="fon" style="color:#fff; margin-top: 28px; margin-left: 15px;">Consórcios <mark>LTDA</mark></h2>
+                </div>
+                <div class="mj">
+                    <p>
+                        <a href=""><svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" fill="currentColor" class="ci" viewBox="0 0 16 16">
+                            <path d="M8 0C5.829 0 5.556.01 4.703.048 3.85.088 3.269.222 2.76.42a3.917 3.917 0 0 0-1.417.923A3.927 3.927 0 0 0 .42 2.76C.222 3.268.087 3.85.048 4.7.01 5.555 0 5.827 0 8.001c0 2.172.01 2.444.048 3.297.04.852.174 1.433.372 1.942.205.526.478.972.923 1.417.444.445.89.719 1.416.923.51.198 1.09.333 1.942.372C5.555 15.99 5.827 16 8 16s2.444-.01 3.298-.048c.851-.04 1.434-.174 1.943-.372a3.916 3.916 0 0 0 1.416-.923c.445-.445.718-.891.923-1.417.197-.509.332-1.09.372-1.942C15.99 10.445 16 10.173 16 8s-.01-2.445-.048-3.299c-.04-.851-.175-1.433-.372-1.941a3.926 3.926 0 0 0-.923-1.417A3.911 3.911 0 0 0 13.24.42c-.51-.198-1.092-.333-1.943-.372C10.443.01 10.172 0 7.998 0h.003zm-.717 1.442h.718c2.136 0 2.389.007 3.232.046.78.035 1.204.166 1.486.275.373.145.64.319.92.599.28.28.453.546.598.92.11.281.24.705.275 1.485.039.843.047 1.096.047 3.231s-.008 2.389-.047 3.232c-.035.78-.166 1.203-.275 1.485a2.47 2.47 0 0 1-.599.919c-.28.28-.546.453-.92.598-.28.11-.704.24-1.485.276-.843.038-1.096.047-3.232.047s-2.39-.009-3.233-.047c-.78-.036-1.203-.166-1.485-.276a2.478 2.478 0 0 1-.92-.598 2.48 2.48 0 0 1-.6-.92c-.109-.281-.24-.705-.275-1.485-.038-.843-.046-1.096-.046-3.233 0-2.136.008-2.388.046-3.231.036-.78.166-1.204.276-1.486.145-.373.319-.64.599-.92.28-.28.546-.453.92-.598.282-.11.705-.24 1.485-.276.738-.034 1.024-.044 2.515-.045v.002zm4.988 1.328a.96.96 0 1 0 0 1.92.96.96 0 0 0 0-1.92zm-4.27 1.122a4.109 4.109 0 1 0 0 8.217 4.109 4.109 0 0 0 0-8.217zm0 1.441a2.667 2.667 0 1 1 0 5.334 2.667 2.667 0 0 1 0-5.334"/>
+                        </svg></a>
+                    </p>
+                    <p>
+                        <a href=""><svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" fill="currentColor" class="ci" viewBox="0 0 16 16">
+                            <path d="M3.654 1.328a.678.678 0 0 0-1.015-.063L1.605 2.3c-.483.484-.661 1.169-.45 1.77a17.568 17.568 0 0 0 4.168 6.608 17.569 17.569 0 0 0 6.608 4.168c.601.211 1.286.033 1.77-.45l1.034-1.034a.678.678 0 0 0-.063-1.015l-2.307-1.794a.678.678 0 0 0-.58-.122l-2.19.547a1.745 1.745 0 0 1-1.657-.459L5.482 8.062a1.745 1.745 0 0 1-.46-1.657l.548-2.19a.678.678 0 0 0-.122-.58L3.654 1.328zM1.884.511a1.745 1.745 0 0 1 2.612.163L6.29 2.98c.329.423.445.974.315 1.494l-.547 2.19a.678.678 0 0 0 .178.643l2.457 2.457a.678.678 0 0 0 .644.178l2.189-.547a1.745 1.745 0 0 1 1.494.315l2.306 1.794c.829.645.905 1.87.163 2.611l-1.034 1.034c-.74.74-1.846 1.065-2.877.702a18.634 18.634 0 0 1-7.01-4.42 18.634 18.634 0 0 1-4.42-7.009c-.362-1.03-.037-2.137.703-2.877L1.885.511zM11 .5a.5.5 0 0 1 .5-.5h4a.5.5 0 0 1 .5.5v4a.5.5 0 0 1-1 0V1.707l-4.146 4.147a.5.5 0 0 1-.708-.708L14.293 1H11.5a.5.5 0 0 1-.5-.5"/>
+                        </svg></a>
+                    </p>
+                    <p>
+                        <a href=""><svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" fill="currentColor" class="ci" viewBox="0 0 16 16">
+                            <path d="M0 1.146C0 .513.526 0 1.175 0h13.65C15.474 0 16 .513 16 1.146v13.708c0 .633-.526 1.146-1.175 1.146H1.175C.526 16 0 15.487 0 14.854V1.146zm4.943 12.248V6.169H2.542v7.225h2.401m-1.2-8.212c.837 0 1.358-.554 1.358-1.248-.015-.709-.52-1.248-1.342-1.248-.822 0-1.359.54-1.359 1.248 0 .694.521 1.248 1.327 1.248h.016zm4.908 8.212V9.359c0-.216.016-.432.08-.586.173-.431.568-.878 1.232-.878.869 0 1.216.662 1.216 1.634v3.865h2.401V9.25c0-2.22-1.184-3.252-2.764-3.252-1.274 0-1.845.7-2.165 1.193v.025h-.016a5.54 5.54 0 0 1 .016-.025V6.169h-2.4c.03.678 0 7.225 0 7.225h2.4"/>
+                        </svg></a>
+                    </p>
+                    <p>
+                        <a href=""><svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" fill="currentColor" class="ci" viewBox="0 0 16 16">
+                            <path d="M16 8.049c0-4.446-3.582-8.05-8-8.05C3.58 0-.002 3.603-.002 8.05c0 4.017 2.926 7.347 6.75 7.951v-5.625h-2.03V8.05H6.75V6.275c0-2.017 1.195-3.131 3.022-3.131.876 0 1.791.157 1.791.157v1.98h-1.009c-.993 0-1.303.621-1.303 1.258v1.51h2.218l-.354 2.326H9.25V16c3.824-.604 6.75-3.934 6.75-7.951"/>
+                        </svg></a>
+                    </p>
+                </div>
+            </div>
+    
+            <div class="we" style="margin-top: 30px;">
+                <h3 class="designH3">Baixe o app</h3>
+                <button id="er" class="a"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="di" viewBox="0 0 16 16">
+                    <path d="M14.222 9.374c1.037-.61 1.037-2.137 0-2.748L11.528 5.04 8.32 8l3.207 2.96 2.694-1.586Zm-3.595 2.116L7.583 8.68 1.03 14.73c.201 1.029 1.36 1.61 2.303 1.055l7.294-4.295M1 13.396V2.603L6.846 8zM1.03 1.27l6.553 6.05 3.044-2.81L3.333.215C2.39-.341 1.231.24 1.03 1.27Z"/>
+                  </svg>Google Play</button>
+                <button id="er" class="a"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="di" viewBox="0 0 16 16" style="margin-left: 16px;">
+                    <path d="M11.182.008C11.148-.03 9.923.023 8.857 1.18c-1.066 1.156-.902 2.482-.878 2.516.024.034 1.52.087 2.475-1.258.955-1.345.762-2.391.728-2.43Zm3.314 11.733c-.048-.096-2.325-1.234-2.113-3.422.212-2.189 1.675-2.789 1.698-2.854.023-.065-.597-.79-1.254-1.157a3.692 3.692 0 0 0-1.563-.434c-.108-.003-.483-.095-1.254.116-.508.139-1.653.589-1.968.607-.316.018-1.256-.522-2.267-.665-.647-.125-1.333.131-1.824.328-.49.196-1.422.754-2.074 2.237-.652 1.482-.311 3.83-.067 4.56.244.729.625 1.924 1.273 2.796.576.984 1.34 1.667 1.659 1.899.319.232 1.219.386 1.843.067.502-.308 1.408-.485 1.766-.472.357.013 1.061.154 1.782.539.571.197 1.111.115 1.652-.105.541-.221 1.324-1.059 2.238-2.758.347-.79.505-1.217.473-1.282Z"/>
+                    <path d="M11.182.008C11.148-.03 9.923.023 8.857 1.18c-1.066 1.156-.902 2.482-.878 2.516.024.034 1.52.087 2.475-1.258.955-1.345.762-2.391.728-2.43Zm3.314 11.733c-.048-.096-2.325-1.234-2.113-3.422.212-2.189 1.675-2.789 1.698-2.854.023-.065-.597-.79-1.254-1.157a3.692 3.692 0 0 0-1.563-.434c-.108-.003-.483-.095-1.254.116-.508.139-1.653.589-1.968.607-.316.018-1.256-.522-2.267-.665-.647-.125-1.333.131-1.824.328-.49.196-1.422.754-2.074 2.237-.652 1.482-.311 3.83-.067 4.56.244.729.625 1.924 1.273 2.796.576.984 1.34 1.667 1.659 1.899.319.232 1.219.386 1.843.067.502-.308 1.408-.485 1.766-.472.357.013 1.061.154 1.782.539.571.197 1.111.115 1.652-.105.541-.221 1.324-1.059 2.238-2.758.347-.79.505-1.217.473-1.282Z"/>
+                  </svg>App Store</button>
+            </div>
+    
+            <div class="ty" style="margin-top: 30px;">
+                <h3 class="designH3">Fale conosco</h3>
+                <p>Horário de atendimento:</p>
+                <p>Segunda a Sexta-feira das 10h às 17h,</p>
+                <p>exceto em feriados nacionais.</p>
+            </div>
+            <span class="textFooter" style="margin: auto;">©2023 Consórcios LTDA</span>
+        </footer>
+
+        <!-- Modais -->
+        <div id="myModalLogin" class="modal1">
+            <div class="modal-content" id="contentModalHeader">
+              <span class="close1" onclick="closeModal1()" style="margin-right: 30px;">&times;</span>
+              <h2 class="fon" style="color: rgb(255, 113, 4); font-size: 30px; margin: 32px 3px 5px 50px;">Login</h2>
+              
+              <div style="display: flex; justify-content: center; margin-top: 28px;">
+                  <div style="margin-right: 3px;">
+                      <label class="label" for="username"><p style="color: aliceblue; margin: 0px; text-align: left;">Email:</p></label>
+                      <input class="input" type="email" id="username" name="username">
+                  </div>
+                  <br>
+                  <div style="margin-left: 3px;">
+                      <label class="label" for="password"><p style="color: aliceblue; margin: 0px; text-align: left;">Senha:</p></label>
+                      <input class="input" type="password" id="password" name="password">
+                  </div>
+              </div>
+              <br>
+              <button onclick="submitLogin()">Logar</button>
+            </div>
+        </div>
+
+        <!-- Modais lista de vendedores -->
         <div class="modalBackdrop hidden" style="display: none;"></div>
         <div id="modalAdicionarContato" class="modal">
             <div class="modal-dialog">
@@ -270,6 +329,61 @@
         </div>
 
         <script>
+            document.addEventListener("DOMContentLoaded", function() {
+                const track = document.querySelector('.carousel-track');
+                const slides = Array.from(track.children); //convertendo os filhos do track em um array
+                const prevButton = document.getElementById('prevBtn');
+                const nextButton = document.getElementById('nextBtn');
+
+                const slideWidth = slides[0].getBoundingClientRect().width; //ajusta a posição dos slides no carrossel
+
+                const setSlidePosition = (slide, index) => {//define a posiçao de cada slide e os organiza na horizontal
+                    slide.style.left = slideWidth * index + 'px';
+                };
+
+                slides.forEach(setSlidePosition);//posiciona cada slide individualmente
+
+                const moveToSlide = (track, currentSlide, targetSlide) => {//move os slides para esquerda ou direita e define "transform" com base na posição do próximo
+                    track.style.transform = 'translateX(-' + targetSlide.style.left + ')';
+                };
+
+                nextButton.addEventListener('click', () => {//adiciona um ouvinte de evento para o clique no botão "Próximo", assim, quando o botão é clicado, a função é executada.
+                    const currentSlide = track.querySelector('.carousel-slide:not(.hidden)');//Obtém o slide atual e exclui os hidden
+                    const nextSlide = currentSlide.nextElementSibling || slides[0];//Obtém o próximo, caso não tenha ele retorna ao primeiro
+
+                    moveToSlide(track, currentSlide, nextSlide);//move para o  próximo slide
+                    currentSlide.classList.add('hidden');//Usa 'hidden' no próximo slide para mostrá-lo.
+                    nextSlide.classList.remove('hidden');//Remove'hidden' do próximo slide para mostrá-lo.
+                });
+
+                prevButton.addEventListener('click', () => {//{Mesma coisa, só que com o anterior
+                    const currentSlide = track.querySelector('.carousel-slide:not(.hidden)');
+                    const prevSlide = currentSlide.previousElementSibling || slides[slides.length - 1];
+
+                    moveToSlide(track, currentSlide, prevSlide);
+                    currentSlide.classList.add('hidden');
+                    prevSlide.classList.remove('hidden');//}
+                });
+            });
+
+            function openModal() {
+                document.getElementById('myModalLogin').style.display = 'block';
+            }
+            function closeModal1() {
+                document.getElementById('myModalLogin').style.display = 'none';
+            }
+            window.onclick = function(event) {
+                if (event.target === document.getElementById('myModalLogin')) {
+                    document.getElementById('myModalLogin').style.display = 'none';
+                }
+            }
+            function submitLogin() {
+                document.getElementById('myModalLogin').style.display = 'none';
+            }
+
+
+            //Lista de vendas code
+
             let vendedores = [];
 
             const abrirModal = document.getElementById("modalAdicionarContato");
@@ -307,7 +421,7 @@
                 let codigoVendedor = parseInt(document.getElementById("codigoVendedor").value, 10);
                 let nome = document.getElementById("nome").value;
                 let cargo = document.getElementById("cargo").value;
-                let valorVenda = parseInt(document.getElementById("valorVenda").value, 10);
+                let valorVenda = parseFloat(document.getElementById("valorVenda").value);
                 nome = capitalizarPrimeiraLetra(nome);
 
                 const index = vendedores.findIndex(v => v.codVendedor === codigoVendedor);

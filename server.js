@@ -34,14 +34,16 @@ db.serialize(() => {
                 db.run(`
                     INSERT INTO vendas (codVendedor, nomeVendedor, cargoVendedor, valorVenda)
                     VALUES
-                        (1, 'Paulo Oliveira', 'Pleno', 65889.00),
-                        (4, 'Carlos Sanchez', 'Júnior', 5.00),
-                        (1, 'Paulo Oliveira', 'Pleno', 65889.00),
                         (3, 'Laura Cardozo Alves', 'Sênior', 2235000.00),
-                        (1, 'Paulo Oliveira', 'Pleno', 70889.00),
-                        (2, 'Arnaldo dos Santos', 'Júnior', 5102.00),
-                        (4, 'Carlos Sanchez', 'Júnior', 18655.00),
-                        (2, 'Arnaldo dos Santos', 'Júnior', 2.00)
+                        (8, 'Paulo Oliveira', 'Pleno', 65889.00),
+                        (4, 'Carlos Sánchez', 'Júnior', 18655.00),
+                        (5, 'Arnaldo dos Santos', 'Júnior', 5102.00),
+                        (6, 'Raquel Dourado', 'Pleno', 35521.00),
+                        (6, 'Raquel Dourado', 'Pleno', 14323.00),
+                        (4, 'Carlos Sánchez', 'Júnior', 4500.00),
+                        (6, 'Raquel Dourado', 'Pleno', 35521.00),
+                        (7, 'Luana Fernandes', 'Júnior', 3800.00),
+                        (8, 'Paulo Oliveira', 'Pleno', 78000.00)
                 `, (insertErr) => {
                     if (insertErr) {
                         console.error('Erro ao inserir dados na tabela:', insertErr.message);
