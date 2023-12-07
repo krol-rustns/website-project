@@ -1,11 +1,20 @@
+body {
+  background-color: #363636;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
 header {
-  background-color: #1b1b1b;
   margin: -8px;
   margin-top: -20px;
   height: 110px;
   width: 100%;
   position: fixed;
   z-index: 1;
+  background: rgba(27, 27, 27, 0.89);
+  box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+  backdrop-filter: blur(8.2px);
+  -webkit-backdrop-filter: blur(8.2px);
+  border: 1px solid rgba(27, 27, 27, 0.11);
 }
 
 #header{
@@ -35,26 +44,30 @@ header {
   width: 50px;
   height: 45px;
   margin-top: 25px;
+  margin-left: 35px;
 }
 
-h1 {
+.con {
   color: whitesmoke;
   font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
   font-size: 3em;
 }
 
-h2 {
-  font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+.fon {
   font-size: 2em;
+  margin: 0px;
+  margin-left: 30px;
+  font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+  color: #000;
+
 }
 
-h3 {
+.designH3 {
   font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
   font-size: 2em;
 }
 
 mark {
-  padding-left: -10px;
   color:#F15001 ;
   font-family:'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
   background-color: inherit;
@@ -68,10 +81,6 @@ mark {
   background: #f2783b ;
   text-align: center;
   font-size: 1.5em;
-}
-
-body {
-  background-color: #363636;
 }
 
 .container img {
@@ -100,17 +109,20 @@ div.scrollmenu a:hover {
   display: flex;
   align-items: center;
   flex-direction: row;
-  margin-left: 0px;
+  margin-left: 10px;
+  margin-right: 10px;
 }
 
 .um{
   font-family: Arial, Helvetica, sans-serif;
-  margin: 10px;
+  margin: 40px;
   font-size: 20px;
+  text-align: justify;
+  line-height: 1.5;
 }
 
 .imagenss{
-  margin-right: 5px;
+  margin-right: 35px;
 }
 
 .blocos{
@@ -155,8 +167,6 @@ button:active {
 }
 
 #ajuda{
-  display: flex;
-  flex-direction: column;
   border-radius: 25px;
   margin-bottom: 80px;
 }
@@ -165,6 +175,7 @@ button:active {
   display: flex;
   justify-content: space-around;
   flex-direction: row;
+  margin-top: 20px;
 }
 
 .jj p{
@@ -175,6 +186,7 @@ button:active {
  
 a{
   color: #fff;
+  text-decoration: none;
 }
 
 .mae {
@@ -226,7 +238,7 @@ a{
   right: 10px;
 }
 
-.modal {
+#myModalLogin {
   display: none;
   position: fixed;
   z-index: 1;
@@ -239,7 +251,7 @@ a{
   background-color: rgba(0,0,0,0.4);
 }
 
-.modal-content {
+#contentModalHeader {
   background-color: #363636;
   margin: 5% auto;
   border: 1px solid #20202088;
@@ -250,25 +262,25 @@ a{
   margin: 0px;
 }
 
-.close {
+.close1 {
   color: #aaa;
   float: right;
   font-size: 28px;
   font-weight: bold;
 }
 
-.close:hover,
-.close:focus {
+.close1:hover,
+.close1:focus {
   color: black;
   text-decoration: none;
   cursor: pointer;
 }
 
-label{
+.label{
   display: block;
 }
 
-input{
+.input{
   background-color: #777;
   border: none;
   padding: 6px;
@@ -290,43 +302,39 @@ input{
   padding: 20px;
   border: 1px solid #ccc;
   text-align: center;
+  border-radius: 8px;
 }
 
-.col p{
+.col p {
   font-size: larger;
   font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
   color: #F15001;
 }
 
-h2{
-  font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
-  color: #000;
-}
-
-.caix{
+.caix {
   text-align: center;
 }
 
-.bi{
+.bi {
   color: #ffffff;
   height: 90px;
   width: 90px;
   text-align: center;
 }
 
-#relatorioTextos{
+#relatorioTextos {
   display: flex;
   flex-wrap: wrap;
 }
 
-#relatorio, #imgEmpresa, #central{
+#relatorio, #imgEmpresa, #central {
   display: flex;
   align-items: center;
   flex-direction: row-reverse;
   margin-left: 0px;
 }
 
-footer{
+footer {
   background-color: #1b1b1b;
   margin: -8px;
   height: 12%;
@@ -335,46 +343,47 @@ footer{
   flex-direction: row;
 }
 
-.mj{
+.mj {
   display: flex;
   flex-direction: row;
   margin-left: 30px;
 }
 
-.ci{
+.ci {
   margin-left: 20px;
 }
 
-.we{
+.we {
   margin-left: 130px;
 }
 
-.a{
+.a {
   display: flex;
   flex-direction: column;
   margin-bottom: 10px;
   border-radius: 0;
 }
 
-.di{
+.di {
   color: #000;
   margin-right: 10px;
 }
 
-#er{
+#er {
   display: flex;
   flex-direction: row;
+  width: 220px;
 }
 
-.ty{
+.ty {
   margin-left: 130px;
 }
 
-.ty p{
+.ty p {
   font-size: 20px;
 }
 
-
- 
-  
-
+.duvida a {
+  font-family: Arial, Helvetica, sans-serif;
+  font-size: smaller;
+}

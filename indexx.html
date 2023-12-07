@@ -1,42 +1,41 @@
 <!DOCTYPE html>
-<html lang="pt-br">
+<html lang="pt-BR">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Consórcios LTDA</title>
-    <link rel="stylesheet" href="in.css" />
-    <a href="https://www.flaticon.com/br/icones-gratis/transporte"></a>
+    <link rel="stylesheet" href="in.css"/>
 </head>
 
 <body>
     <header>
         <div id="header">
             <div class="cab">
-                <img class="lg" src="C:\Users\anapa\Downloads\logo_consorcio.png">
+                <img class="lg" src="./img/logo_consorcio.png">
                 <h1 class="con">Consórcios <mark>LTDA</mark></h1>
             </div>
             <div>
                 <ul>
-                    <button id="botao-quem-somos">Quem somos</button>
-                    <button id="botao-para-voce">Para Você</button>     
-                    <button id="botao-relatorio">Relatórios</button>
-                    <button id="botao-central-ajuda">Central de ajuda</button>
+                    <a href="#conhecer"><button id="botao-quem-somos">Quem somos</button></a>
+                    <a href="#imgEmpresa"><button id="botao-para-voce">Para Você</button></a>
+                    <a href=""><button id="botao-relatorio">Vendas</button></a>
+                    <a href="#ajuda"><button id="botao-central-ajuda">Central de ajuda</button></a>
                     <button onclick="openModal()">Acesso</button>   
-            </ul>
+                </ul>
             </div>
         </div>
     </header>
 
-    <div id="myModal" class="modal">
-        <div class="modal-content">
-          <span class="close" onclick="closeModal()">&times;</span>
-          <h2 style="color: rgb(255, 113, 4); font-size: 30px;">Login</h2>
+    <div id="myModalLogin" class="modal1">
+        <div class="modal-content" id="contentModalHeader">
+          <span class="close1" onclick="closeModal1()" style="margin-right: 30px;">&times;</span>
+          <h2 class="fon" style="color: rgb(255, 113, 4); font-size: 30px; margin: 32px 3px 5px 50px;">Login</h2>
           
-          <label for="username"><p style="color: aliceblue; margin: 0px;">Email:</p></label>
-          <input type="text" id="username" name="username">
+          <label class="label" for="username"><p style="color: aliceblue; margin: 0px;">Email:</p></label>
+          <input class="input" type="text" id="username" name="username">
           <br>
-          <label for="password"><p style="color: aliceblue; margin: 0px;">Senha:</p></label>
-          <input type="password" id="password" name="password">
+          <label class="label" for="password"><p style="color: aliceblue; margin: 0px;">Senha:</p></label>
+          <input class="input" type="password" id="password" name="password">
           <br>
           <button onclick="submitLogin()">Logar</button>
         </div>
@@ -44,17 +43,17 @@
 
     <div class="mae">
         <div class="carousel-container">
-        <div class="carousel-track">
-            <div class="carousel-slide">
-                <img class="bn" src="C:\Users\anapa\Downloads\banner1.png">
+            <div class="carousel-track">
+                <div class="carousel-slide">
+                    <img class="bn" src="./img/banner1.png">
+                </div>
+                <div class="carousel-slide">
+                    <img class="bn" src="./img/banner2.png">
+                </div>
+                <div class="carousel-slide">
+                    <img class="bn" src="./img/banner3.png">
+                </div>
             </div>
-            <div class="carousel-slide">
-                <img class="bn" src="C:\Users\anapa\Downloads\banner2.png">
-            </div>
-            <div class="carousel-slide">
-                <img class="bn" src="C:\Users\anapa\Downloads\banner3.png">
-            </div>
-        </div>
 
             <button class="carousel-button" id="prevBtn">&lt;</button>
             <button class="carousel-button" id="nextBtn">&gt;</button>
@@ -64,7 +63,7 @@
     <div id="imgEmpresa">
         <div id="conhecer" class="blocos">
             <div class="text">
-                <h2 style="font-size: 45px;">Conhecendo-nos</h2>
+                <h2 class="fon" style="font-size: 45px;">Conhecendo-nos</h2>
                 <p class="um">Bem-vindo à <mark>Consórcios LTDA</mark>,a sua porta de entrada para realizar seus sonhos de
                     forma planejada e acessível.
                 Somos uma empresa especializada em consórcios, comprometida em oferecer soluções financeiras
@@ -76,10 +75,9 @@
                     perfeitamente no seu orçamento.</p>
             </div>
             <div class="imagenss">
-                <img src="C:\Users\anapa\OneDrive\Documentos\note.jpg" width="400" height="300" alt="foto empresa" />
+                <img src="./img/note.jpg" width="400" height="300" alt="foto empresa"/>
             </div>
         </div>
-        
     </div>
 
     <div class="col-container">
@@ -106,7 +104,6 @@
             </svg>
             <p>Consórcios de Automóveis</p>
             <button class="caix">Clique para mais</button>
-            
         </div>
 
         <div class="col" style="background:rgb(37, 37, 35)">
@@ -115,17 +112,16 @@
             </svg>
             <p>Consórcios de Viagens</p>
             <button class="caix">Clique para mais</button>
-            
         </div>
     </div>
 
     <div id="relatorio">
         <div id="relatorioTextos" class="blocos" >
-            <h2 style="font-size: 45px;">Transparência</h2>
+            <h2 class="fon" style="font-size: 45px;">Transparência</h2>
             <p class="um">Na nossa abordagem, a transparência com os nossos clientes é fundamental. Acreditamos que a confiança é
                 construída através da clareza e da abertura nas nossas operações. É por isso que nos comprometemos a
-                fornecer relatórios detalhados sobre as comissões da nossa empresa.</p>
-            <p class="um">Valorizamos a compreensão mútua e acreditamos que ao compartilhar informações de forma transparente,
+                fornecer relatórios detalhados sobre as comissões da nossa empresa.
+                Valorizamos a compreensão mútua e acreditamos que ao compartilhar informações de forma transparente,
                 fortalecemos os laços com nossos clientes, proporcionando-lhes a confiança necessária para tomar decisões
                 informadas sobre seus investimentos em consórcio. Estamos empenhados em estabelecer uma relação de parceria
                 duradoura, baseada na integridade e na transparência.</p>
@@ -134,23 +130,24 @@
 
     <div id="central">
         <div id="ajuda" class="blocos">
-            <h2 style="font-size: 40px;">Central de ajuda</h2>
-            <div class="jj"> 
+            <h2 class="fon" style="font-size: 40px;">Central de ajuda</h2>
+            <div class="jj">
                 <p class="duvida"><a href=""> Dúvidas frequentes</a></p>
                 <p class="duvida"><a href=""> Fale conosco</a></p>
                 <p class="duvida"><a href=""> Consulte boletos antigos</a></p>
-                <p class="duvida"><a href=href=""> Regulamentos</a></p>
+                <p class="duvida"><a href=""> Regulamentos</a></p>
                 <p class="duvida"><a href=""> Resultado das assembleias</a></p>
                 <p class="duvida"><a href=""> Como gerenciar seus consórcios</a></p>
                 <p class="duvida"><a href=""> Políticas da empresa</a></p>
             </div>
         </div>
     </div>
+
     <footer>
         <div class="nu1">
             <div class="bab">
-                <img class="pg" src="C:\Users\anapa\Downloads\logo_consorcio.png">
-                <h2 class="fon" style="color:#fff">Consórcios <mark>LTDA</mark></h2>
+                <img class="pg" src="./img/logo_consorcio.png">
+                <h2 class="fon" style="color:#fff; margin-top: 28px; margin-left: 15px;">Consórcios <mark>LTDA</mark></h2>
             </div>
             <div class="mj">
                 <p>
@@ -177,22 +174,23 @@
         </div>
 
         <div class="we">
-            <h3>Baixe o app</h3>
+            <h3 class="designH3">Baixe o app</h3>
             <button id="er" class="a"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="di" viewBox="0 0 16 16">
                 <path d="M14.222 9.374c1.037-.61 1.037-2.137 0-2.748L11.528 5.04 8.32 8l3.207 2.96 2.694-1.586Zm-3.595 2.116L7.583 8.68 1.03 14.73c.201 1.029 1.36 1.61 2.303 1.055l7.294-4.295M1 13.396V2.603L6.846 8zM1.03 1.27l6.553 6.05 3.044-2.81L3.333.215C2.39-.341 1.231.24 1.03 1.27Z"/>
               </svg>Google Play</button>
-            <button id="er" class="a"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="di" viewBox="0 0 16 16">
+            <button id="er" class="a"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="di" viewBox="0 0 16 16" style="margin-left: 16px;">
                 <path d="M11.182.008C11.148-.03 9.923.023 8.857 1.18c-1.066 1.156-.902 2.482-.878 2.516.024.034 1.52.087 2.475-1.258.955-1.345.762-2.391.728-2.43Zm3.314 11.733c-.048-.096-2.325-1.234-2.113-3.422.212-2.189 1.675-2.789 1.698-2.854.023-.065-.597-.79-1.254-1.157a3.692 3.692 0 0 0-1.563-.434c-.108-.003-.483-.095-1.254.116-.508.139-1.653.589-1.968.607-.316.018-1.256-.522-2.267-.665-.647-.125-1.333.131-1.824.328-.49.196-1.422.754-2.074 2.237-.652 1.482-.311 3.83-.067 4.56.244.729.625 1.924 1.273 2.796.576.984 1.34 1.667 1.659 1.899.319.232 1.219.386 1.843.067.502-.308 1.408-.485 1.766-.472.357.013 1.061.154 1.782.539.571.197 1.111.115 1.652-.105.541-.221 1.324-1.059 2.238-2.758.347-.79.505-1.217.473-1.282Z"/>
                 <path d="M11.182.008C11.148-.03 9.923.023 8.857 1.18c-1.066 1.156-.902 2.482-.878 2.516.024.034 1.52.087 2.475-1.258.955-1.345.762-2.391.728-2.43Zm3.314 11.733c-.048-.096-2.325-1.234-2.113-3.422.212-2.189 1.675-2.789 1.698-2.854.023-.065-.597-.79-1.254-1.157a3.692 3.692 0 0 0-1.563-.434c-.108-.003-.483-.095-1.254.116-.508.139-1.653.589-1.968.607-.316.018-1.256-.522-2.267-.665-.647-.125-1.333.131-1.824.328-.49.196-1.422.754-2.074 2.237-.652 1.482-.311 3.83-.067 4.56.244.729.625 1.924 1.273 2.796.576.984 1.34 1.667 1.659 1.899.319.232 1.219.386 1.843.067.502-.308 1.408-.485 1.766-.472.357.013 1.061.154 1.782.539.571.197 1.111.115 1.652-.105.541-.221 1.324-1.059 2.238-2.758.347-.79.505-1.217.473-1.282Z"/>
               </svg>App Store</button>
         </div>
 
         <div class="ty">
-            <h3>Fale conosco</h3>
+            <h3 class="designH3">Fale conosco</h3>
             <p>Horário de atendimento:</p>
             <p>Segunda a Sexta-feira das 10h às 17h,</p>
             <p>exceto em feriados nacionais.</p>
         </div>
+        <span class="textFooter" style="margin: auto;">©2023 Consórcios LTDA</span>
     </footer>
   
     
@@ -236,43 +234,21 @@
             });
         });
 
-    
         function openModal() {
-            document.getElementById('myModal').style.display = 'block';
+            document.getElementById('myModalLogin').style.display = 'block';
         }
-
-        function closeModal() {
-            document.getElementById('myModal').style.display = 'none';
+        function closeModal1() {
+            document.getElementById('myModalLogin').style.display = 'none';
         }
-
         window.onclick = function(event) {
-            if (event.target === document.getElementById('myModal')) {
-            closeModal();
+            if (event.target === document.getElementById('myModalLogin')) {
+            closeModal1();
         }
         }
-
         function submitLogin() {
-            document.getElementById('myModal').style.display = 'none';
+            document.getElementById('myModalLogin').style.display = 'none';
         }
-
-        
-        document.getElementById('botao-quem-somos').addEventListener('click', function () {
-            window.location.href = '#conhecer';
-        });
-
-        document.getElementById('botao-relatorio').addEventListener('click', function () {
-            window.location.href = '#relatorio';
-        });
-
-        document.getElementById('botao-para-voce').addEventListener('click', function () {
-            window.location.href = '#imgEmpresa';
-        });
-
-        document.getElementById('botao-central-ajuda').addEventListener('click', function() {
-            window.location.href = '#ajuda';
-        });
 
     </script>
-    
 </body>
 </html>
