@@ -1,5 +1,5 @@
 header {
-    background-color: #1b1b1b;
+  background-color: #1b1b1b;
   margin: -8px;
   margin-top: -20px;
   height: 110px;
@@ -8,93 +8,126 @@ header {
   z-index: 1;
 }
 
+#header{
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  height: 105px
+}
+
+.cab{
+  display: flex;
+  flex-direction: row; 
+}
+
+.bab{
+  display: flex;
+  flex-direction: row; 
+}
+
+.lg{
+  width: 90px;
+  height: 80px;
+  margin-top: 20px;
+}
+
+.pg{
+  width: 50px;
+  height: 45px;
+  margin-top: 25px;
+}
+
 h1 {
-    color: whitesmoke;
-    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
-    font-size: 3em;
+  color: whitesmoke;
+  font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+  font-size: 3em;
+}
+
+h2 {
+  font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+  font-size: 2em;
+}
+
+h3 {
+  font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+  font-size: 2em;
 }
 
 mark {
-    padding-left: -10px;
-    color:#F15001 ;
-    font-family:'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
-    background-color: inherit;
-
+  padding-left: -10px;
+  color:#F15001 ;
+  font-family:'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+  background-color: inherit;
 }
 
 .semSublinhado {
-	text-decoration: none;
-	color: rgb(7, 7, 7);
-	margin: 10px;
-	padding: 0 10px;
-	background: #f2783b ;
-	text-align: center;
-	font-size: 1.5em;
+  text-decoration: none;
+  color: rgb(7, 7, 7);
+  margin: 10px;
+  padding: 0 10px;
+  background: #f2783b ;
+  text-align: center;
+  font-size: 1.5em;
 }
 
 body {
-    background-color: #363636;
-
+  background-color: #363636;
 }
 
 .container img {
-    margin-right: 15px;
+  margin-right: 15px;
 }
-
-
 
 div.scrollmenu {
-    background-color: #333;
-    overflow: auto;
-    white-space: nowrap;
-    
+  background-color: #333;
+  overflow: auto;
+  white-space: nowrap;
 }
-    
+  
 div.scrollmenu a {
-    display: inline-block;
-    color: white;
-    text-align: center;
-    padding: 0px;
-    text-decoration: none;
+  display: inline-block;
+  color: white;
+  text-align: center;
+  padding: 0px;
+  text-decoration: none;
 }
-    
+  
 div.scrollmenu a:hover {
-    background-color: #777;
+  background-color: #777;
 }
 
 #conhecer{
-    display: flex;
-    flex-wrap: wrap;
+  display: flex;
+  align-items: center;
+  flex-direction: row;
+  margin-left: 0px;
 }
 
 .um{
-    font-family: Arial, Helvetica, sans-serif;
-    margin: 10px;
-
+  font-family: Arial, Helvetica, sans-serif;
+  margin: 10px;
+  font-size: 20px;
 }
 
+.imagenss{
+  margin-right: 5px;
+}
 
- #imgEmpresa{
-    display: flex;
-    align-items: center;
-    flex-direction: row;
-    margin-left: 0px;
- }
+.blocos{
+  background:  rgb(148, 113, 88);
+  color: #fff;
+  width: 100%;
+  margin-top: 80px;
+  margin-left: 10px;
+  margin-right: 10px;
+  padding-top: 2%;
+  padding-bottom: 2%;
+  padding-left: 0.5%;
+  padding-right: 0.5%;
+  border-radius: 25px;
+}
 
- .blocos{
-    width: 60%;
-    background:  rgb(252, 148, 69);
-    color: #fff;
-    margin-top: 40px;
-    margin-left: 10px;
-    padding-top: 2%;
-    padding-bottom: 2%;
-    padding-left: 0.5%;
-    padding-right: 0.5%;
-    border-radius: 25px;
-  }
-
-  button {
+button {
   padding: 1.3em 3em;
   font-size: 12px;
   text-transform: uppercase;
@@ -120,39 +153,33 @@ button:hover {
 button:active {
   transform: translateY(-1px);
 }
-#header{
-  display: flex;
-  justify-content: space-around;
-  align-items: center;
-  height: 105px
-}
+
 #ajuda{
   display: flex;
-  background:  rgb(255, 118, 14);
-  color: #fff;
   flex-direction: column;
-  width: 250px;
-  margin-top: 25px;
   border-radius: 25px;
-  margin-left: 15px;
-  box-shadow: 3px 3px 3px 2px rgba(0, 0, 0, 0.2);
-  
-  
-}
-.duvida{
-  margin: 4px;
-  margin-left: 15px;
-  font-size: larger;
-  
+  margin-bottom: 80px;
 }
 
+.jj{
+  display: flex;
+  justify-content: space-around;
+  flex-direction: row;
+}
+
+.jj p{
+  margin-left: 20px;
+  margin-right: 20px;
+  font-size: 20px;
+}
+ 
 a{
   color: #fff;
 }
+
 .mae {
   margin-top: 0px;
   padding: 0;
-  
 }
 
 .carousel-container {
@@ -166,6 +193,7 @@ a{
 .carousel-track {
   display: flex;
   transition: transform 0.5s ease-in-out;
+  margin-top: 94px;
 }
 
 .carousel-slide {
@@ -199,56 +227,53 @@ a{
 }
 
 .modal {
-display: none;
-position: fixed;
-z-index: 1;
-left: 0;
-top: 0;
-width: 100%;
-height: 100%;
-overflow: auto;
-background-color: rgb(0,0,0);
-background-color: rgba(0,0,0,0.4);
-
+  display: none;
+  position: fixed;
+  z-index: 1;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  overflow: auto;
+  background-color: rgb(0,0,0);
+  background-color: rgba(0,0,0,0.4);
 }
-
 
 .modal-content {
-background-color: #363636;
-margin: 5% auto;
-border: 1px solid #20202088;
-width: 100%;
-height: 40%;
-text-align: center;
-display: block;
-margin: 0px;
-
+  background-color: #363636;
+  margin: 5% auto;
+  border: 1px solid #20202088;
+  width: 100%;
+  height: 40%;
+  text-align: center;
+  display: block;
+  margin: 0px;
 }
 
-
 .close {
-color: #aaa;
-float: right;
-font-size: 28px;
-font-weight: bold;
+  color: #aaa;
+  float: right;
+  font-size: 28px;
+  font-weight: bold;
 }
 
 .close:hover,
 .close:focus {
-color: black;
-text-decoration: none;
-cursor: pointer;
+  color: black;
+  text-decoration: none;
+  cursor: pointer;
 }
 
 label{
-display: block;
+  display: block;
 }
+
 input{
-background-color: #777;
-border: none;
-padding: 6px;
-margin-bottom: 9px;
-border-radius: 60px;
+  background-color: #777;
+  border: none;
+  padding: 6px;
+  margin-bottom: 9px;
+  border-radius: 60px;
 }
 
 .col-container {
@@ -261,12 +286,11 @@ border-radius: 60px;
   width: 15%;
   height: 40%;
   margin: 10px;
+  margin-top: 80px;
   padding: 20px;
   border: 1px solid #ccc;
   text-align: center;
 }
-
-
 
 .col p{
   font-size: larger;
@@ -281,7 +305,6 @@ h2{
 
 .caix{
   text-align: center;
-
 }
 
 .bi{
@@ -292,25 +315,64 @@ h2{
 }
 
 #relatorioTextos{
-display: flex;
-flex-wrap: wrap;
+  display: flex;
+  flex-wrap: wrap;
 }
 
-#relatorio{
-display: flex;
-align-items: center;
-flex-direction: row-reverse;
-margin-left: 0px;
+#relatorio, #imgEmpresa, #central{
+  display: flex;
+  align-items: center;
+  flex-direction: row-reverse;
+  margin-left: 0px;
 }
 
 footer{
   background-color: #1b1b1b;
   margin: -8px;
-  height: 120px;
+  height: 12%;
   color:white;
+  display: flex;
+  flex-direction: row;
 }
 
- 
+.mj{
+  display: flex;
+  flex-direction: row;
+  margin-left: 30px;
+}
+
+.ci{
+  margin-left: 20px;
+}
+
+.we{
+  margin-left: 130px;
+}
+
+.a{
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 10px;
+  border-radius: 0;
+}
+
+.di{
+  color: #000;
+  margin-right: 10px;
+}
+
+#er{
+  display: flex;
+  flex-direction: row;
+}
+
+.ty{
+  margin-left: 130px;
+}
+
+.ty p{
+  font-size: 20px;
+}
 
 
  
