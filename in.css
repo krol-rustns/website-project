@@ -189,8 +189,7 @@ ul {
   margin: 0px;
   margin-left: 30px;
   font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
-  color: #000;
-
+  color: #ffffff;
 }
 
 .designH3 {
@@ -273,7 +272,7 @@ div.scrollmenu a:hover {
 }
 
 .blocos {
-  background:  rgb(148, 113, 88);
+  background:  rgb(205 133 82);
   color: #fff;
   width: 100%;
   margin-top: 80px;
@@ -283,6 +282,7 @@ div.scrollmenu a:hover {
   padding-left: 0.5%;
   padding-right: 0.5%;
   border-radius: 25px;
+  max-width: 1300px;
 }
 
 button {
@@ -483,8 +483,7 @@ a:hover {
 
 #relatorio, #imgEmpresa, #central {
   display: flex;
-  align-items: center;
-  flex-direction: row-reverse;
+  justify-content: center;
   margin-left: 0px;
 }
 
