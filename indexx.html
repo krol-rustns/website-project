@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="pt-br">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -11,15 +11,14 @@
 <body>
     <header>
         <div id="header">
-            <div>
+            <div class="cab">
+                <img class="lg" src="C:\Users\anapa\Downloads\logo_consorcio.png">
                 <h1 class="con">Consórcios <mark>LTDA</mark></h1>
             </div>
-
-            
             <div>
                 <ul>
                     <button id="botao-quem-somos">Quem somos</button>
-                    <button id="botao-para-voce">Para Você</button>    
+                    <button id="botao-para-voce">Para Você</button>     
                     <button id="botao-relatorio">Relatórios</button>
                     <button id="botao-central-ajuda">Central de ajuda</button>
                     <button onclick="openModal()">Acesso</button>   
@@ -41,7 +40,7 @@
           <br>
           <button onclick="submitLogin()">Logar</button>
         </div>
-    </div>
+    </div>
 
     <div class="mae">
         <div class="carousel-container">
@@ -64,21 +63,24 @@
 
     <div id="imgEmpresa">
         <div id="conhecer" class="blocos">
-            <h2 style="font-size: 42px;">Conhecendo-nos</h2>
-            <p class="um">Bem-vindo à <mark>Consórcios LTDA</mark>,a sua porta de entrada para realizar seus sonhos de
-                forma planejada e acessível.</p>
-            <p class="um">Somos uma empresa especializada em consórcios, comprometida em oferecer soluções financeiras
-                inteligentes para a realização dos seus objetivos,
-                visando tornar o acesso a bens e serviços descomplicado e acessível a todos.</p>
-            <p class="um">Oferecemos também uma ampla gama de consórcios, adaptados às necessidades e desejos individuais de cada
-                cliente. Seja a compra da casa própria,
-                do carro dos sonhos, a reforma da casa ou a viagem tão esperada, temos planos que se encaixam
-                perfeitamente no seu orçamento.</p>
+            <div class="text">
+                <h2 style="font-size: 45px;">Conhecendo-nos</h2>
+                <p class="um">Bem-vindo à <mark>Consórcios LTDA</mark>,a sua porta de entrada para realizar seus sonhos de
+                    forma planejada e acessível.
+                Somos uma empresa especializada em consórcios, comprometida em oferecer soluções financeiras
+                    inteligentes para a realização dos seus objetivos,
+                    visando tornar o acesso a bens e serviços descomplicado e acessível a todos.
+                Oferecemos também uma ampla gama de consórcios, adaptados às necessidades e desejos individuais de cada
+                    cliente. Seja a compra da casa própria,
+                    do carro dos sonhos, a reforma da casa ou a viagem tão esperada, temos planos que se encaixam
+                    perfeitamente no seu orçamento.</p>
+            </div>
+            <div class="imagenss">
+                <img src="C:\Users\anapa\OneDrive\Documentos\note.jpg" width="400" height="300" alt="foto empresa" />
+            </div>
         </div>
-        <div class="imagens">
-            <img src="C:\Users\anapa\Downloads\empresa.jpg" width="400" height="300" alt="foto empresa" />
-        </div>
-    </div>
+        
+    </div>
 
     <div class="col-container">
         <div class="col" style="background:rgb(37, 37, 35)">
@@ -119,7 +121,7 @@
 
     <div id="relatorio">
         <div id="relatorioTextos" class="blocos" >
-            <h2 style="font-size: 42px;">Transparência</h2>
+            <h2 style="font-size: 45px;">Transparência</h2>
             <p class="um">Na nossa abordagem, a transparência com os nossos clientes é fundamental. Acreditamos que a confiança é
                 construída através da clareza e da abertura nas nossas operações. É por isso que nos comprometemos a
                 fornecer relatórios detalhados sobre as comissões da nossa empresa.</p>
@@ -128,35 +130,74 @@
                 informadas sobre seus investimentos em consórcio. Estamos empenhados em estabelecer uma relação de parceria
                 duradoura, baseada na integridade e na transparência.</p>
         </div>
-        <div class="imagens">
-            <figure>
-                <img src="C:\Users\anapa\OneDrive\Documentos\relatório.jpg" width="400" height="300" alt="foto lista comissão" />
-                    <figcaption style="text-align: center;">
-                        <button>Aba relatórios</button>
-                    </figcaption>
-            </figure>
+    </div>
+
+    <div id="central">
+        <div id="ajuda" class="blocos">
+            <h2 style="font-size: 40px;">Central de ajuda</h2>
+            <div class="jj"> 
+                <p class="duvida"><a href=""> Dúvidas frequentes</a></p>
+                <p class="duvida"><a href=""> Fale conosco</a></p>
+                <p class="duvida"><a href=""> Consulte boletos antigos</a></p>
+                <p class="duvida"><a href=href=""> Regulamentos</a></p>
+                <p class="duvida"><a href=""> Resultado das assembleias</a></p>
+                <p class="duvida"><a href=""> Como gerenciar seus consórcios</a></p>
+                <p class="duvida"><a href=""> Políticas da empresa</a></p>
+            </div>
         </div>
     </div>
-
-    <div id="ajuda">
-        <h2 style="margin-left: 15px; margin-bottom: 10px;">Central de ajuda</h2>
-        <p class="duvida"><a href="relatorio2.html"> Dúvidas frequentes</a></p>
-        <p class="duvida"><a href="relatorio2.html"> Fale conosco</a></p>
-        <p class="duvida"><a href="relatorio2.html"> Consulte boletos antigos</a></p>
-        <p class="duvida"><a href="relatorio2.html"> Regulamentos</a></p>
-        <p class="duvida"><a href="relatorio2.html"> Resultado das assembleias</a></p>
-    </div>
-
     <footer>
-        <h1 class="con">Consórcios <mark>LTDA</mark></h1>
-        <ul>
-            <li>Nossos serviços</li>
-            <li>Nossas redes sociais</li>
-        </ul>
+        <div class="nu1">
+            <div class="bab">
+                <img class="pg" src="C:\Users\anapa\Downloads\logo_consorcio.png">
+                <h2 class="fon" style="color:#fff">Consórcios <mark>LTDA</mark></h2>
+            </div>
+            <div class="mj">
+                <p>
+                    <a href=""><svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" fill="currentColor" class="ci" viewBox="0 0 16 16">
+                        <path d="M8 0C5.829 0 5.556.01 4.703.048 3.85.088 3.269.222 2.76.42a3.917 3.917 0 0 0-1.417.923A3.927 3.927 0 0 0 .42 2.76C.222 3.268.087 3.85.048 4.7.01 5.555 0 5.827 0 8.001c0 2.172.01 2.444.048 3.297.04.852.174 1.433.372 1.942.205.526.478.972.923 1.417.444.445.89.719 1.416.923.51.198 1.09.333 1.942.372C5.555 15.99 5.827 16 8 16s2.444-.01 3.298-.048c.851-.04 1.434-.174 1.943-.372a3.916 3.916 0 0 0 1.416-.923c.445-.445.718-.891.923-1.417.197-.509.332-1.09.372-1.942C15.99 10.445 16 10.173 16 8s-.01-2.445-.048-3.299c-.04-.851-.175-1.433-.372-1.941a3.926 3.926 0 0 0-.923-1.417A3.911 3.911 0 0 0 13.24.42c-.51-.198-1.092-.333-1.943-.372C10.443.01 10.172 0 7.998 0h.003zm-.717 1.442h.718c2.136 0 2.389.007 3.232.046.78.035 1.204.166 1.486.275.373.145.64.319.92.599.28.28.453.546.598.92.11.281.24.705.275 1.485.039.843.047 1.096.047 3.231s-.008 2.389-.047 3.232c-.035.78-.166 1.203-.275 1.485a2.47 2.47 0 0 1-.599.919c-.28.28-.546.453-.92.598-.28.11-.704.24-1.485.276-.843.038-1.096.047-3.232.047s-2.39-.009-3.233-.047c-.78-.036-1.203-.166-1.485-.276a2.478 2.478 0 0 1-.92-.598 2.48 2.48 0 0 1-.6-.92c-.109-.281-.24-.705-.275-1.485-.038-.843-.046-1.096-.046-3.233 0-2.136.008-2.388.046-3.231.036-.78.166-1.204.276-1.486.145-.373.319-.64.599-.92.28-.28.546-.453.92-.598.282-.11.705-.24 1.485-.276.738-.034 1.024-.044 2.515-.045v.002zm4.988 1.328a.96.96 0 1 0 0 1.92.96.96 0 0 0 0-1.92zm-4.27 1.122a4.109 4.109 0 1 0 0 8.217 4.109 4.109 0 0 0 0-8.217zm0 1.441a2.667 2.667 0 1 1 0 5.334 2.667 2.667 0 0 1 0-5.334"/>
+                    </svg></a>
+                </p>
+                <p>
+                    <a href=""><svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" fill="currentColor" class="ci" viewBox="0 0 16 16">
+                        <path d="M3.654 1.328a.678.678 0 0 0-1.015-.063L1.605 2.3c-.483.484-.661 1.169-.45 1.77a17.568 17.568 0 0 0 4.168 6.608 17.569 17.569 0 0 0 6.608 4.168c.601.211 1.286.033 1.77-.45l1.034-1.034a.678.678 0 0 0-.063-1.015l-2.307-1.794a.678.678 0 0 0-.58-.122l-2.19.547a1.745 1.745 0 0 1-1.657-.459L5.482 8.062a1.745 1.745 0 0 1-.46-1.657l.548-2.19a.678.678 0 0 0-.122-.58L3.654 1.328zM1.884.511a1.745 1.745 0 0 1 2.612.163L6.29 2.98c.329.423.445.974.315 1.494l-.547 2.19a.678.678 0 0 0 .178.643l2.457 2.457a.678.678 0 0 0 .644.178l2.189-.547a1.745 1.745 0 0 1 1.494.315l2.306 1.794c.829.645.905 1.87.163 2.611l-1.034 1.034c-.74.74-1.846 1.065-2.877.702a18.634 18.634 0 0 1-7.01-4.42 18.634 18.634 0 0 1-4.42-7.009c-.362-1.03-.037-2.137.703-2.877L1.885.511zM11 .5a.5.5 0 0 1 .5-.5h4a.5.5 0 0 1 .5.5v4a.5.5 0 0 1-1 0V1.707l-4.146 4.147a.5.5 0 0 1-.708-.708L14.293 1H11.5a.5.5 0 0 1-.5-.5"/>
+                    </svg></a>
+                </p>
+                <p>
+                    <a href=""><svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" fill="currentColor" class="ci" viewBox="0 0 16 16">
+                        <path d="M0 1.146C0 .513.526 0 1.175 0h13.65C15.474 0 16 .513 16 1.146v13.708c0 .633-.526 1.146-1.175 1.146H1.175C.526 16 0 15.487 0 14.854V1.146zm4.943 12.248V6.169H2.542v7.225h2.401m-1.2-8.212c.837 0 1.358-.554 1.358-1.248-.015-.709-.52-1.248-1.342-1.248-.822 0-1.359.54-1.359 1.248 0 .694.521 1.248 1.327 1.248h.016zm4.908 8.212V9.359c0-.216.016-.432.08-.586.173-.431.568-.878 1.232-.878.869 0 1.216.662 1.216 1.634v3.865h2.401V9.25c0-2.22-1.184-3.252-2.764-3.252-1.274 0-1.845.7-2.165 1.193v.025h-.016a5.54 5.54 0 0 1 .016-.025V6.169h-2.4c.03.678 0 7.225 0 7.225h2.4"/>
+                    </svg></a>
+                </p>
+                <p>
+                    <a href=""><svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" fill="currentColor" class="ci" viewBox="0 0 16 16">
+                        <path d="M16 8.049c0-4.446-3.582-8.05-8-8.05C3.58 0-.002 3.603-.002 8.05c0 4.017 2.926 7.347 6.75 7.951v-5.625h-2.03V8.05H6.75V6.275c0-2.017 1.195-3.131 3.022-3.131.876 0 1.791.157 1.791.157v1.98h-1.009c-.993 0-1.303.621-1.303 1.258v1.51h2.218l-.354 2.326H9.25V16c3.824-.604 6.75-3.934 6.75-7.951"/>
+                    </svg></a>
+                </p>
+            </div>
+        </div>
+
+        <div class="we">
+            <h3>Baixe o app</h3>
+            <button id="er" class="a"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="di" viewBox="0 0 16 16">
+                <path d="M14.222 9.374c1.037-.61 1.037-2.137 0-2.748L11.528 5.04 8.32 8l3.207 2.96 2.694-1.586Zm-3.595 2.116L7.583 8.68 1.03 14.73c.201 1.029 1.36 1.61 2.303 1.055l7.294-4.295M1 13.396V2.603L6.846 8zM1.03 1.27l6.553 6.05 3.044-2.81L3.333.215C2.39-.341 1.231.24 1.03 1.27Z"/>
+              </svg>Google Play</button>
+            <button id="er" class="a"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="di" viewBox="0 0 16 16">
+                <path d="M11.182.008C11.148-.03 9.923.023 8.857 1.18c-1.066 1.156-.902 2.482-.878 2.516.024.034 1.52.087 2.475-1.258.955-1.345.762-2.391.728-2.43Zm3.314 11.733c-.048-.096-2.325-1.234-2.113-3.422.212-2.189 1.675-2.789 1.698-2.854.023-.065-.597-.79-1.254-1.157a3.692 3.692 0 0 0-1.563-.434c-.108-.003-.483-.095-1.254.116-.508.139-1.653.589-1.968.607-.316.018-1.256-.522-2.267-.665-.647-.125-1.333.131-1.824.328-.49.196-1.422.754-2.074 2.237-.652 1.482-.311 3.83-.067 4.56.244.729.625 1.924 1.273 2.796.576.984 1.34 1.667 1.659 1.899.319.232 1.219.386 1.843.067.502-.308 1.408-.485 1.766-.472.357.013 1.061.154 1.782.539.571.197 1.111.115 1.652-.105.541-.221 1.324-1.059 2.238-2.758.347-.79.505-1.217.473-1.282Z"/>
+                <path d="M11.182.008C11.148-.03 9.923.023 8.857 1.18c-1.066 1.156-.902 2.482-.878 2.516.024.034 1.52.087 2.475-1.258.955-1.345.762-2.391.728-2.43Zm3.314 11.733c-.048-.096-2.325-1.234-2.113-3.422.212-2.189 1.675-2.789 1.698-2.854.023-.065-.597-.79-1.254-1.157a3.692 3.692 0 0 0-1.563-.434c-.108-.003-.483-.095-1.254.116-.508.139-1.653.589-1.968.607-.316.018-1.256-.522-2.267-.665-.647-.125-1.333.131-1.824.328-.49.196-1.422.754-2.074 2.237-.652 1.482-.311 3.83-.067 4.56.244.729.625 1.924 1.273 2.796.576.984 1.34 1.667 1.659 1.899.319.232 1.219.386 1.843.067.502-.308 1.408-.485 1.766-.472.357.013 1.061.154 1.782.539.571.197 1.111.115 1.652-.105.541-.221 1.324-1.059 2.238-2.758.347-.79.505-1.217.473-1.282Z"/>
+              </svg>App Store</button>
+        </div>
+
+        <div class="ty">
+            <h3>Fale conosco</h3>
+            <p>Horário de atendimento:</p>
+            <p>Segunda a Sexta-feira das 10h às 17h,</p>
+            <p>exceto em feriados nacionais.</p>
+        </div>
     </footer>
   
     
       
+
     <script>
         document.addEventListener("DOMContentLoaded", function() {
             const track = document.querySelector('.carousel-track');
@@ -231,8 +272,6 @@
             window.location.href = '#ajuda';
         });
 
-
-        
     </script>
     
 </body>
